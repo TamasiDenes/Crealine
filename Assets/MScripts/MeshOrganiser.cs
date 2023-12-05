@@ -38,7 +38,7 @@ public class MeshOrganiser : MonoBehaviour
 
         foreach (Wall wall in wallManager.Walls)
         {
-            allPoints.Add(wall.Points);
+            allPoints.Add(wall.Interpolate());
         }
 
         FullEngine = new MultiGraphEngine(allPoints);
