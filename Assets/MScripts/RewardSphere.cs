@@ -7,21 +7,23 @@ public class RewardSphere : MonoBehaviour
 {
     [SerializeField] RewardType type;
 
-    Color defaultColor;
     RewardOrganiser organiser;
 
     MeshRenderer mr;
     MeshGenerator generator;
+
+    Color defaultColor;
 
     // Start is called before the first frame update
     void Start()
     {
         ScoreManager.Instance.MaxScore++;
 
-        defaultColor = mr.material.color;
         organiser = transform.parent.GetComponent<RewardOrganiser>();
 
         mr = GetComponent<MeshRenderer>();
+        defaultColor = mr.material.color;
+
 
         switch (type)
         {
