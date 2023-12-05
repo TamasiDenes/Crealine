@@ -103,7 +103,8 @@ public class MeshGenerator : MonoBehaviour
 
             if (Triangulator.TryTriangulateConcavePolygon(blob, out localTriangleList))
             {
-                RemoveContainerBlobTriangles(verticeList, localTriangleList);
+                if (RemoveContainerBlobTriangles(verticeList, localTriangleList))
+                    continue;
 
                 triangleList.AddRange(localTriangleList);
             }
