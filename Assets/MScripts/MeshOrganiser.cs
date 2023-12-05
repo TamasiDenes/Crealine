@@ -8,8 +8,10 @@ using UnityEngine;
 
 public class MeshOrganiser : MonoBehaviour
 {
-    public Player player01;
-    public Player player02;
+    [SerializeField] bool separateMeshes = true;
+
+    [SerializeField] Player player01;
+    [SerializeField] Player player02;
 
     public WallManager wallManager;
 
@@ -24,103 +26,103 @@ public class MeshOrganiser : MonoBehaviour
 
     public MeshGenerator globalMesh;
 
-    MultiGraphEngine FullEngine;
+    MultiGraphEngine graphEngine;
 
-    public bool separeteMeshes;
-
-
-    internal void RefreshBlobs()
+    private List<List<Vector2>> CollectAllPoints()
     {
-        List<List<Vector2>> allPoints = new List<List<Vector2>>();
+        List<List<Vector2>> result = new List<List<Vector2>>();
 
-        allPoints.Add(player01.Points);
-        allPoints.Add(player02.Points);
+        result.Add(player01.Points);
+        result.Add(player02.Points);
 
         foreach (Wall wall in wallManager.Walls)
         {
-            allPoints.Add(wall.Interpolate());
+            result.Add(wall.Interpolate());
         }
 
-        FullEngine = new MultiGraphEngine(allPoints);
+        return result;
+    }
 
-        List<List<Vector3>> allBlobs = FullEngine.ProcessGraph();
 
-        if (!separeteMeshes)
+    public void RefreshBlobs()
+    {
+        List<List<Vector2>> allPoints = CollectAllPoints();
+
+        graphEngine = new MultiGraphEngine(allPoints);
+
+        List<List<Vector3>> allBlobs = graphEngine.ProcessGraph();
+
+        if (separateMeshes)
         {
-            globalMesh.GenerateBlobs(allBlobs);
+            HandleSeparateMeshes(allBlobs);
         }
         else
         {
-            List<List<Vector3>> player01Blobs = new List<List<Vector3>>();
-            List<List<Vector3>> player02Blobs = new List<List<Vector3>>();
-            List<List<Vector3>> playersBlobs = new List<List<Vector3>>();
-
-            List<List<Vector3>> wallPlayer01Blobs = new List<List<Vector3>>();
-            List<List<Vector3>> wallPlayer02Blobs = new List<List<Vector3>>();
-            List<List<Vector3>> wallPlayersBlobs = new List<List<Vector3>>();
-
-            // blobokon végig megyek
-            foreach (var blob in allBlobs)
-            {
-                bool inPlayer01 = false;
-                bool inPlayer02 = false;
-                bool inWall = false;
-                // minden elemén végig megyek
-                foreach (var point in blob)
-                {
-                    // ha kiderült hogy mindháromban benne van - nincs értelme tovább nézelõdni
-                    if (inPlayer01 && inPlayer02 && inWall)
-                        continue;
-
-                    // adott elem amelyik MeshGenerator elemeibe benne van -> ahhoz felveszem mint blob
-                    if (!inPlayer01 && player01.Points.Contains(point))
-                    {
-                        inPlayer01 = true;
-                    }
-
-                    if (!inPlayer02 && player02.Points.Contains(point))
-                    {
-                        inPlayer02 = true;
-                    }
-
-                    if (!inWall && wallManager.Walls.Any(wall => wall.ContainsPoint(point)))
-                    {
-                        inWall = true;
-                    }
-                }
-
-                if (inWall && inPlayer01 && inPlayer02)
-                    wallPlayersBlobs.Add(blob);
-                else if (inPlayer01 && inPlayer02)
-                    playersBlobs.Add(blob);
-                else if (inPlayer01 && inWall)
-                    wallPlayer01Blobs.Add(blob);
-                else if (inPlayer02 && inWall)
-                    wallPlayer02Blobs.Add(blob);
-                else if (inPlayer01)
-                    player01Blobs.Add(blob);
-                else if (inPlayer02)
-                    player02Blobs.Add(blob);
-            }
-
-            player01_Mesh.GenerateBlobs(player01Blobs);
-            player02_Mesh.GenerateBlobs(player02Blobs);
-            players_Mesh.GenerateBlobs(playersBlobs);
-
-            wall_player01_Mesh.GenerateBlobs(wallPlayer01Blobs);
-            wall_player02_Mesh.GenerateBlobs(wallPlayer02Blobs);
-            wall_players_Mesh.GenerateBlobs(wallPlayersBlobs);
+            globalMesh.GenerateBlobs(allBlobs);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void HandleSeparateMeshes(List<List<Vector3>> allBlobs)
     {
+        List<List<Vector3>> player01Blobs = new List<List<Vector3>>();
+        List<List<Vector3>> player02Blobs = new List<List<Vector3>>();
+        List<List<Vector3>> playersBlobs = new List<List<Vector3>>();
+
+        List<List<Vector3>> wallPlayer01Blobs = new List<List<Vector3>>();
+        List<List<Vector3>> wallPlayer02Blobs = new List<List<Vector3>>();
+        List<List<Vector3>> wallPlayersBlobs = new List<List<Vector3>>();
+
+        foreach (var blob in allBlobs)
+        {
+            bool inPlayer01 = false;
+            bool inPlayer02 = false;
+            bool inWall = false;
+
+            foreach (var point in blob)
+            {
+                // we can stop if it is in both player and wall
+                if (inPlayer01 && inPlayer02 && inWall)
+                    continue;
+
+                // check if it is in players and/or walls
+                if (!inPlayer01 && player01.Points.Contains(point))
+                {
+                    inPlayer01 = true;
+                }
+
+                if (!inPlayer02 && player02.Points.Contains(point))
+                {
+                    inPlayer02 = true;
+                }
+
+                if (!inWall && wallManager.Walls.Any(wall => wall.ContainsPoint(point)))
+                {
+                    inWall = true;
+                }
+            }
+
+            // refresh blob containers based on flags
+            if (inWall && inPlayer01 && inPlayer02)
+                wallPlayersBlobs.Add(blob);
+            else if (inPlayer01 && inPlayer02)
+                playersBlobs.Add(blob);
+            else if (inPlayer01 && inWall)
+                wallPlayer01Blobs.Add(blob);
+            else if (inPlayer02 && inWall)
+                wallPlayer02Blobs.Add(blob);
+            else if (inPlayer01)
+                player01Blobs.Add(blob);
+            else if (inPlayer02)
+                player02Blobs.Add(blob);
+        }
+
+        player01_Mesh.GenerateBlobs(player01Blobs);
+        player02_Mesh.GenerateBlobs(player02Blobs);
+        players_Mesh.GenerateBlobs(playersBlobs);
+
+        wall_player01_Mesh.GenerateBlobs(wallPlayer01Blobs);
+        wall_player02_Mesh.GenerateBlobs(wallPlayer02Blobs);
+        wall_players_Mesh.GenerateBlobs(wallPlayersBlobs);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
