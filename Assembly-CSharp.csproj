@@ -79,7 +79,6 @@
     <Compile Include="Assets\MScripts\Obsolate\NewLineSeqInter.cs" />
     <Compile Include="Assets\MScripts\Player\Player.cs" />
     <Compile Include="Assets\MScripts\Player\Snake.cs" />
-    <Compile Include="Assets\MScripts\Player\SnakePoint.cs" />
     <Compile Include="Assets\MScripts\Player\Tail.cs" />
     <Compile Include="Assets\MScripts\RewardOrganiser.cs" />
     <Compile Include="Assets\MScripts\RewardSphere.cs" />

@@ -54,7 +54,6 @@ public class Tail : MonoBehaviour
         line.positionCount = points.Count;
         line.SetPosition(points.Count - 1, headPos);
 
-        _player.RefreshNeck(lastHead);
         lastHead = points.Last();
 
         if (points.Count > 1)//&& CheckCreatedPoint())
@@ -68,12 +67,10 @@ public class Tail : MonoBehaviour
 
         refreshGraph |= CheckDisapearedPoint();
 
-        _player.RefreshEnd(lastTailPosition);
         lastTailPosition = points.First();
 
         points.RemoveAt(0);
 
-        _player.RefreshNeck(lastHead);
         lastHead = points.Last();
 
         points.Add(headPos);
