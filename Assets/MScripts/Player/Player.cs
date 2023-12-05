@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
 
     public List<Vector2> Points => tail.Points;
 
-    internal Vector2 GetSnakePosition() => snake.transform.position;
+    public Vector2 GetSnakePosition() => snake.transform.position;
 
-    internal void RefreshGraph()
+    public void RefreshGraph()
     {
         meshOrganiser.RefreshBlobs();
         rewardOrganiser.RefreshRewardsState();

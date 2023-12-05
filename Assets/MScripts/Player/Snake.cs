@@ -11,20 +11,22 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class Snake : MonoBehaviour
 {
-    [SerializeField] Player _player;
+    Player player;
+
     [SerializeField] InputAction _movementControls;
     [SerializeField] InputAction _speedControl;
     [SerializeField] InputAction _startStopControl;
 
-    [SerializeField] float _speed = 1.5f;
-    [SerializeField] float _rotationSpeed = 350f;
+    [SerializeField] float speed = 1.5f;
+    [SerializeField] float rotationSpeed = 350f;
 
-    [SerializeField] bool _freeMovingMode = false;
-    [SerializeField] bool _isMoving;
+    [SerializeField] bool freeMovingMode = true;
+    [SerializeField] bool isMoving = true;
 
-    float _halfSpeed = 0;
+    float slowSpeed = 0;
+    float slowSpeedRatio = 0.3f;
 
-    float horizontal = 0f;
+    float horizontalRotation = 0f;
     float freeRotationTreshold = 1f;
 
 
@@ -47,39 +49,45 @@ public class Snake : MonoBehaviour
         _startStopControl.performed += SwitchMoving;
     }
 
-    // Update is called once per frame
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = transform.parent.gameObject.GetComponent<Player>();
+    }
+
+        // Update is called once per frame
     void Update()
     {
-        if (_freeMovingMode)
+        if (freeMovingMode)
         {
-            horizontal = GetFreeMovHorizontal(_movementControls.ReadValue<Vector2>());
+            horizontalRotation = GetFreeMoveHorizontal(_movementControls.ReadValue<Vector2>());
         }
         else
         {
-            horizontal = _movementControls.ReadValue<Vector2>().x;
+            horizontalRotation = _movementControls.ReadValue<Vector2>().x;
         }
 
-        _halfSpeed = _speedControl.ReadValue<float>();
+        slowSpeed = _speedControl.ReadValue<float>();
     }
 
     void FixedUpdate()
     {
-        if (!_isMoving)
+        if (!isMoving)
             return;
 
-        if (_halfSpeed != 0)
+        if (slowSpeed != 0)
         {
-            transform.Translate(Vector2.up * _speed * 0.3f * Time.fixedDeltaTime, Space.Self);
-            transform.Rotate(Vector3.forward * horizontal * -1 * _rotationSpeed * 0.3f * Time.fixedDeltaTime);
+            transform.Translate(Vector2.up * speed * slowSpeedRatio * Time.fixedDeltaTime, Space.Self);
+            transform.Rotate(Vector3.forward * horizontalRotation * -1 * rotationSpeed * slowSpeedRatio * Time.fixedDeltaTime);
         }
         else
         {
-            transform.Translate(Vector2.up * _speed * Time.fixedDeltaTime, Space.Self);
-            transform.Rotate(Vector3.forward * horizontal * -1 * _rotationSpeed * Time.fixedDeltaTime);
+            transform.Translate(Vector2.up * speed * Time.fixedDeltaTime, Space.Self);
+            transform.Rotate(Vector3.forward * horizontalRotation * -1 * rotationSpeed * Time.fixedDeltaTime);
         }
     }
 
-    float GetFreeMovHorizontal(Vector2 direction)
+    private float GetFreeMoveHorizontal(Vector2 direction)
     {
         float horizontal;
 
@@ -115,6 +123,6 @@ public class Snake : MonoBehaviour
 
     private void SwitchMoving(InputAction.CallbackContext context)
     {
-        _isMoving = !_isMoving;
+        isMoving = !isMoving;
     }
 }
