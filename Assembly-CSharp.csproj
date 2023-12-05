@@ -67,7 +67,7 @@
     <Compile Include="Assets\Common\SingleGraphEngine.cs" />
     <Compile Include="Assets\Common\Triangulator.cs" />
     <Compile Include="Assets\Common\Utility.cs" />
-    <Compile Include="Assets\MScripts\GameManager.cs" />
+    <Compile Include="Assets\MScripts\ScoreManager.cs" />
     <Compile Include="Assets\MScripts\MenuSystem\LevelManager.cs" />
     <Compile Include="Assets\MScripts\MenuSystem\LevelObject.cs" />
     <Compile Include="Assets\MScripts\MenuSystem\LevelSelectionMenuManager.cs" />

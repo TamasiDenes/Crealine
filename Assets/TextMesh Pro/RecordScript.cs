@@ -14,6 +14,6 @@ public class RecordScript : MonoBehaviour
 
     public void Update()
     {
-        recordText.text = "Record: " + GameManager.Instance.Record.ToString();
+        recordText.text = "Record: " + ScoreManager.Instance.Record.ToString();
     }
 }

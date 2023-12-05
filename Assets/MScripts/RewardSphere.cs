@@ -16,7 +16,7 @@ public class RewardSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.MaxScore++;
+        ScoreManager.Instance.MaxScore++;
         organiser = transform.parent.GetComponent<RewardOrganiser>();
 
         mr = GetComponent<MeshRenderer>();
@@ -57,7 +57,7 @@ public class RewardSphere : MonoBehaviour
             Color recentColor = mr.material.color;
             mr.material.color = Color.white;
             if(mr.material.color != recentColor)
-                GameManager.Instance.Score++;
+                ScoreManager.Instance.Score++;
         }
         else
         {
@@ -65,7 +65,7 @@ public class RewardSphere : MonoBehaviour
 
             mr.material.color = defaultColor;
             if (mr.material.color != recentColor)
-                GameManager.Instance.Score--;
+                ScoreManager.Instance.Score--;
         }
     }
 }

@@ -7,17 +7,40 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private Player Player01;
-    [SerializeField] private Player Player02;
+    [SerializeField] LayerMenu menu;
+    // actual score: the number of active rewards
+    int score = 0;
+    public int Score
+    {
+        get
+        {
+            return score;
+        }
+        set
+        {
+            score = value;
+            if (Record < score)
+                Record = score;
 
-    [SerializeField] private LayerMenu menu;
+            if (score == MaxScore)
+            {
+                Time.timeScale = 0f;
+
+                OnLevelComplete();
+            }
+        }
+    }
+    // total number of rewards
+    public int MaxScore { get; set; }
+    // the highest achieved score during the gameplay
+    public int Record { get; set; }
 
     // Singleton
-    private static GameManager instance;
+    private static ScoreManager instance;
 
-    public static GameManager Instance
+    public static ScoreManager Instance
     {
         get 
         {
@@ -33,29 +56,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    // aktuális eredmény - mennyi reward van aktiválva
-    int score = 0;
-    public int Score
-    {
-        get
-        {
-            return score;
-        }
-        set
-        {
-            score = value;
-            if (Record < score)
-                Record = score;
-
-            if(score == MaxScore)
-            {
-                Time.timeScale = 0f;
-
-                OnLevelComplete();
-            }
-        }
-    }
-
     private void OnLevelComplete()
     {
         if (LevelSelectionMenuManager.currLevel == LevelSelectionMenuManager.unlockedLevels)
@@ -68,12 +68,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    internal bool IsGameEnd()
+    public bool IsGameEnd()
     {
         return Score == MaxScore;
     }
-
-    public int MaxScore = 0;
-
-    public int Record = 0;
 }
