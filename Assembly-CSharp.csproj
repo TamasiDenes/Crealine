@@ -59,14 +59,14 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CodeBase\ExtensionMethods.cs" />
-    <Compile Include="Assets\CodeBase\SingleGraphEngine.cs" />
-    <Compile Include="Assets\CodeBase\MultiGraphEngine.cs" />
-    <Compile Include="Assets\CodeBase\IntersectManager.cs" />
-    <Compile Include="Assets\CodeBase\GraphEngineBase.cs" />
-    <Compile Include="Assets\CodeBase\Triangulator.cs" />
-    <Compile Include="Assets\CodeBase\Utility.cs" />
-    <Compile Include="Assets\CodeBase\LinearAlgebra.cs" />
+    <Compile Include="Assets\Common\ExtensionMethods.cs" />
+    <Compile Include="Assets\Common\GraphEngineBase.cs" />
+    <Compile Include="Assets\Common\IntersectManager.cs" />
+    <Compile Include="Assets\Common\LinearAlgebra.cs" />
+    <Compile Include="Assets\Common\MultiGraphEngine.cs" />
+    <Compile Include="Assets\Common\SingleGraphEngine.cs" />
+    <Compile Include="Assets\Common\Triangulator.cs" />
+    <Compile Include="Assets\Common\Utility.cs" />
     <Compile Include="Assets\MScripts\GameManager.cs" />
     <Compile Include="Assets\MScripts\MenuSystem\LevelManager.cs" />
     <Compile Include="Assets\MScripts\MenuSystem\LevelObject.cs" />
