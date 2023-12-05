@@ -2,13 +2,15 @@ using LinearAlgebra;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    private List<WallPoint> wallPoints = new List<WallPoint>();
-    [SerializeField] private List<Vector2> points = new List<Vector2>();
+    List<WallPoint> wallPoints = new List<WallPoint>();
+    [SerializeField] List<Vector2> points = new List<Vector2>();
+    [SerializeField] float interpolationTreshold = 1.5f;
     public List<Vector2> Points => points;
 
     LineRenderer lineRenderer;
@@ -53,5 +55,31 @@ public class Wall : MonoBehaviour
         }
 
         return false;
+    }
+
+    public List<Vector2> Interpolate()
+    {
+        List<Vector2> interpolatedPoints = new List<Vector2>();
+
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            interpolatedPoints.Add(points[i]);
+
+            // if the distance of between the to endpoint bigger than the treshold
+            // insert a point and check it again as an endpoint
+            Vector2 currentPoint = points[i];
+            Vector2 shift = ((points[i + 1] - currentPoint) / (points[i + 1] - currentPoint).magnitude) * interpolationTreshold;
+
+
+            while ((currentPoint - points[i+1]).magnitude > interpolationTreshold)
+            {
+                currentPoint = currentPoint + shift;
+                interpolatedPoints.Add(currentPoint);
+            } 
+        }
+
+        interpolatedPoints.Add(points.Last());
+
+        return interpolatedPoints;
     }
 }
