@@ -5,22 +5,23 @@ using UnityEngine;
 
 public class RewardSphere : MonoBehaviour
 {
-    [SerializeField] private RewardType type;
+    [SerializeField] RewardType type;
 
-    MeshRenderer mr;
     Color defaultColor;
     RewardOrganiser organiser;
-    MeshGenerator generator;
 
+    MeshRenderer mr;
+    MeshGenerator generator;
 
     // Start is called before the first frame update
     void Start()
     {
         ScoreManager.Instance.MaxScore++;
+
+        defaultColor = mr.material.color;
         organiser = transform.parent.GetComponent<RewardOrganiser>();
 
         mr = GetComponent<MeshRenderer>();
-        defaultColor = mr.material.color;
 
         switch (type)
         {
