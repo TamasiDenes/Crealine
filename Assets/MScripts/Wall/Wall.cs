@@ -9,10 +9,9 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     List<WallPoint> wallPoints = new List<WallPoint>();
-    [SerializeField] List<Vector2> points = new List<Vector2>();
     [SerializeField] float interpolationTreshold = 1.5f;
-    public List<Vector2> Points => points;
 
+    List<Vector2> points = new List<Vector2>();
     LineRenderer lineRenderer;
     EdgeCollider2D col;
 
@@ -28,19 +27,15 @@ public class Wall : MonoBehaviour
         col = GetComponent<EdgeCollider2D>();
         points = wallPoints.Select(p => new Vector2(p.transform.position.x, p.transform.position.y)).ToList();
 
-
         lineRenderer.positionCount = points.Count;
 
         for (int i = 0; i < points.Count; i++)
         {
             lineRenderer.SetPosition(i, points[i]);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         col.points = points.ToArray();
+
     }
 
     public bool ContainsPoint(Vector2 point)

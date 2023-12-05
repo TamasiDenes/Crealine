@@ -778,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &38188118
 Transform:
   m_ObjectHideFlags: 0
@@ -4615,7 +4615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &277791697
 Transform:
   m_ObjectHideFlags: 0
@@ -5562,11 +5561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 761238723}
-  Player02: {fileID: 1727047967}
   menu: {fileID: 270211111}
-  MaxScore: 0
-  Record: 0
 --- !u!1 &321663324
 GameObject:
   m_ObjectHideFlags: 0
@@ -8577,7 +8572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &514918255
 Transform:
   m_ObjectHideFlags: 0
@@ -9441,7 +9435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &567146750
 Transform:
   m_ObjectHideFlags: 0
@@ -10026,7 +10019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &620063544
 Transform:
   m_ObjectHideFlags: 0
@@ -10677,11 +10669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 355442022}
-  Player02: {fileID: 1670208042}
   menu: {fileID: 287093179}
-  MaxScore: 0
-  Record: 0
 --- !u!1 &661369583
 GameObject:
   m_ObjectHideFlags: 0
@@ -13284,12 +13272,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 2111731861}
   - {fileID: 38188117}
   - {fileID: 632070260}
   - {fileID: 967311297}
   - {fileID: 629693559}
   - {fileID: 978044562}
+  - {fileID: 2111731861}
 --- !u!1 &783017898
 GameObject:
   m_ObjectHideFlags: 0
@@ -13586,7 +13574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &786208684
 Transform:
   m_ObjectHideFlags: 0
@@ -14068,11 +14055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 1719048050}
-  Player02: {fileID: 96499458}
   menu: {fileID: 1176940073}
-  MaxScore: 0
-  Record: 0
 --- !u!1001 &823641798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16082,11 +16065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 1759768338}
-  Player02: {fileID: 1436576465}
   menu: {fileID: 1482946594}
-  MaxScore: 0
-  Record: 0
 --- !u!1 &924532067
 GameObject:
   m_ObjectHideFlags: 0
@@ -20189,11 +20168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 1430033870}
-  Player02: {fileID: 841802561}
   menu: {fileID: 1684198908}
-  MaxScore: 0
-  Record: 0
 --- !u!1001 &1269090931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20582,7 +20557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &1299536977
 Transform:
   m_ObjectHideFlags: 0
@@ -30857,7 +30831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6539b941cf51ec4c86d5208778c5bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walls: []
 --- !u!4 &1791948299
 Transform:
   m_ObjectHideFlags: 0
@@ -31691,11 +31664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 833025818}
-  Player02: {fileID: 1412569296}
   menu: {fileID: 1898979139}
-  MaxScore: 0
-  Record: 0
 --- !u!1 &1864683789
 GameObject:
   m_ObjectHideFlags: 0
@@ -31740,11 +31709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 1787591178}
-  Player02: {fileID: 1476008759}
   menu: {fileID: 580435122}
-  MaxScore: 0
-  Record: 0
 --- !u!114 &1874703134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35016,7 +34981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2111731862
 Transform:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallManager : MonoBehaviour
 {
-    public List<Wall> Walls;
+    public List<Wall> Walls { get; set; } = new List<Wall>();
 
     // Start is called before the first frame update
     void Start()

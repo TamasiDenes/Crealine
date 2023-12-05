@@ -83,9 +83,9 @@
     <Compile Include="Assets\MScripts\Player\Tail.cs" />
     <Compile Include="Assets\MScripts\RewardOrganiser.cs" />
     <Compile Include="Assets\MScripts\RewardSphere.cs" />
-    <Compile Include="Assets\MScripts\Wall.cs" />
-    <Compile Include="Assets\MScripts\WallManager.cs" />
-    <Compile Include="Assets\MScripts\WallPoint.cs" />
+    <Compile Include="Assets\MScripts\Wall\Wall.cs" />
+    <Compile Include="Assets\MScripts\Wall\WallManager.cs" />
+    <Compile Include="Assets\MScripts\Wall\WallPoint.cs" />
     <Compile Include="Assets\TextMesh Pro\RecordScript.cs" />
     <Compile Include="Assets\TextMesh Pro\ScoreScript.cs" />
   </ItemGroup>
