@@ -14,21 +14,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private LayerMenu menu;
 
-    [SerializeField] private InputAction switchPlayer01;
-    [SerializeField] private InputAction switchPlayer02;
-
-    private void OnEnable()
-    {
-        switchPlayer01.Enable();
-        switchPlayer02.Enable();
-    }
-
-    public void OnDisable()
-    {
-        switchPlayer01.Disable();
-        switchPlayer02.Disable();
-    }
-
     // Singleton
     private static GameManager instance;
 
@@ -46,19 +31,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        switchPlayer01.performed += OnSwitchPlayer01;
-        switchPlayer02.performed += OnSwitchPlayer02;
-
-    }
-
-    private void OnSwitchPlayer01(InputAction.CallbackContext context)
-    {
-        Player01.SwitchMoving();
-    }
-
-    private void OnSwitchPlayer02(InputAction.CallbackContext context)
-    {
-        Player02.SwitchMoving();
     }
 
     // aktuális eredmény - mennyi reward van aktiválva

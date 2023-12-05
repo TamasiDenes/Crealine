@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class Snake : MonoBehaviour
     [SerializeField] Player _player;
     [SerializeField] InputAction _movementControls;
     [SerializeField] InputAction _speedControl;
+    [SerializeField] InputAction _startStopControl;
 
     [SerializeField] float _speed = 1.5f;
     [SerializeField] float _rotationSpeed = 350f;
@@ -30,12 +32,19 @@ public class Snake : MonoBehaviour
     {
         _movementControls.Enable();
         _speedControl.Enable();
+        _startStopControl.Enable();
     }
 
     public void OnDisable()
     {
         _movementControls.Disable();
         _speedControl.Disable();
+        _startStopControl.Disable();
+    }
+
+    private void Awake()
+    {
+        _startStopControl.performed += SwitchMoving;
     }
 
     // Update is called once per frame
@@ -104,7 +113,7 @@ public class Snake : MonoBehaviour
         return horizontal;
     }
 
-    internal void SwitchMoving()
+    private void SwitchMoving(InputAction.CallbackContext context)
     {
         _isMoving = !_isMoving;
     }

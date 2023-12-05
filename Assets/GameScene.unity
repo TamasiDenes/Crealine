@@ -2009,6 +2009,23 @@ MonoBehaviour:
       m_Action: Speed Control
       m_Flags: 0
     m_Flags: 0
+  _startStopControl:
+    m_Name: Start Stop Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 00d55500-2e7d-42f6-8bdd-be88b69291d7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cfcefcf4-efc2-431d-a436-f383f94f52e7
+      m_Path: <Keyboard>/numpad1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start Stop Control
+      m_Flags: 0
+    m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
   _freeMovingMode: 1
@@ -5548,40 +5565,6 @@ MonoBehaviour:
   Player01: {fileID: 761238723}
   Player02: {fileID: 1727047967}
   menu: {fileID: 270211111}
-  switchPlayer01:
-    m_Name: Switch Player 01
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e307a680-98d2-420e-a7d1-1953fb606ef2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 76712da3-6b8e-49f2-9bbd-05caef06737f
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 01
-      m_Flags: 0
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: Switch Player 02
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 455624c5-a69c-44c7-9a94-62f9c2f0df2c
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ebf95981-e270-4943-8fce-7230e6053ca1
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 02
-      m_Flags: 0
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!1 &321663324
@@ -6079,6 +6062,10 @@ PrefabInstance:
       value: Movement Controls
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_Name
+      value: Start Stop Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -6093,6 +6080,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Id
@@ -6157,6 +6148,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Action
       value: Speed Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ecf1faa9-7db8-4932-b3a3-0a86714c7e5b
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: switchControl.m_SingletonActionBindings.Array.data[0].m_Action
@@ -6255,6 +6250,10 @@ PrefabInstance:
       value: <Keyboard>/d
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: movementControls.m_SingletonActionBindings.Array.data[3].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -6301,6 +6300,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.data[4].m_Action
       value: Movement Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Start Stop Control
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8471138971397175359, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -9361,6 +9364,23 @@ MonoBehaviour:
       m_Action: Speed Control
       m_Flags: 0
     m_Flags: 0
+  _startStopControl:
+    m_Name: Start Stop Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3ed6087e-bc20-4b57-9626-5e4fb0619bb6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cfcefcf4-efc2-431d-a436-f383f94f52e7
+      m_Path: <Keyboard>/numpad1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start Stop Control
+      m_Flags: 0
+    m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
   _freeMovingMode: 1
@@ -10274,6 +10294,23 @@ MonoBehaviour:
       m_Action: Speed Control
       m_Flags: 0
     m_Flags: 0
+  _startStopControl:
+    m_Name: Start Stop Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cfbc7107-069d-41c4-9038-8ebe2c61c7f3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cfcefcf4-efc2-431d-a436-f383f94f52e7
+      m_Path: <Keyboard>/numpad1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start Stop Control
+      m_Flags: 0
+    m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
   _freeMovingMode: 1
@@ -10643,40 +10680,6 @@ MonoBehaviour:
   Player01: {fileID: 355442022}
   Player02: {fileID: 1670208042}
   menu: {fileID: 287093179}
-  switchPlayer01:
-    m_Name: Switch Player 01
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 75d5aea1-5882-492d-ab1a-8ab726b3a95f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 76712da3-6b8e-49f2-9bbd-05caef06737f
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 01
-      m_Flags: 0
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: Switch Player 02
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2db0e33e-69e1-4e83-945c-8a0bc70f88e8
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ebf95981-e270-4943-8fce-7230e6053ca1
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 02
-      m_Flags: 0
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!1 &661369583
@@ -12246,6 +12249,10 @@ PrefabInstance:
       value: Movement Controls
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_Name
+      value: Start Stop Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -12260,6 +12267,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Id
@@ -12324,6 +12335,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Action
       value: Speed Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ecf1faa9-7db8-4932-b3a3-0a86714c7e5b
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: switchControl.m_SingletonActionBindings.Array.data[0].m_Action
@@ -12422,6 +12437,10 @@ PrefabInstance:
       value: <Keyboard>/d
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: movementControls.m_SingletonActionBindings.Array.data[3].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -12468,6 +12487,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.data[4].m_Action
       value: Movement Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Start Stop Control
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8471138971397175359, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -13161,6 +13184,23 @@ MonoBehaviour:
       m_Action: Speed Control
       m_Flags: 0
     m_Flags: 0
+  _startStopControl:
+    m_Name: Start Stop Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 816dc1dc-a42a-4f49-9838-54798f9a22b7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cfcefcf4-efc2-431d-a436-f383f94f52e7
+      m_Path: <Keyboard>/numpad1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start Stop Control
+      m_Flags: 0
+    m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
   _freeMovingMode: 1
@@ -13685,6 +13725,23 @@ MonoBehaviour:
       m_Action: Speed Control
       m_Flags: 0
     m_Flags: 0
+  _startStopControl:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 95a509c2-fe6d-4f7a-8ee0-e4ab83109127
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cfcefcf4-efc2-431d-a436-f383f94f52e7
+      m_Path: <Keyboard>/numpad1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start Stop Control
+      m_Flags: 0
+    m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
   _freeMovingMode: 1
@@ -14014,24 +14071,6 @@ MonoBehaviour:
   Player01: {fileID: 1719048050}
   Player02: {fileID: 96499458}
   menu: {fileID: 1176940073}
-  switchPlayer01:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7a0ff764-eb17-4f43-b290-d6245617e158
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2bdf9334-621d-49eb-ba37-55b03e005aab
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!1001 &823641798
@@ -14507,6 +14546,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Id
       value: d6bf9fa3-eac5-402e-8d3f-03d17d92aa28
       objectReference: {fileID: 0}
@@ -14569,6 +14612,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Action
       value: Speed Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ecf1faa9-7db8-4932-b3a3-0a86714c7e5b
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: switchControl.m_SingletonActionBindings.Array.data[0].m_Action
@@ -14667,6 +14714,10 @@ PrefabInstance:
       value: <Keyboard>/d
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: movementControls.m_SingletonActionBindings.Array.data[3].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -14713,6 +14764,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.data[4].m_Action
       value: Movement Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Start Stop Control
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8471138971397175359, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -16030,40 +16085,6 @@ MonoBehaviour:
   Player01: {fileID: 1759768338}
   Player02: {fileID: 1436576465}
   menu: {fileID: 1482946594}
-  switchPlayer01:
-    m_Name: Switch Player 01
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 37e13f32-bbd3-4cbc-aebb-a7d052bd4696
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 11241f00-239f-486f-a627-0a21f4b2b6fa
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 01
-      m_Flags: 0
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: Switch Player 02
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 470227bb-9ce2-45c3-8194-8babcecfcef4
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 0ef9ea23-2019-4a39-81a4-8aabc20ef617
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 02
-      m_Flags: 0
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!1 &924532067
@@ -17441,6 +17462,15 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Speed Control
       m_Flags: 0
+    m_Flags: 0
+  _startStopControl:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 94d54a09-d45f-4af8-ad44-624f8033e21f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
     m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
@@ -19101,6 +19131,23 @@ MonoBehaviour:
       m_Action: Speed Control
       m_Flags: 0
     m_Flags: 0
+  _startStopControl:
+    m_Name: Start Stop Control
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: da4bdf56-d1bd-4694-9ac3-e42849580442
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 2d10c8b8-277c-47bb-a269-f62418b08123
+      m_Path: <Keyboard>/numpad1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start Stop Control
+      m_Flags: 0
+    m_Flags: 0
   _speed: 1.5
   _rotationSpeed: 350
   _freeMovingMode: 1
@@ -20145,40 +20192,6 @@ MonoBehaviour:
   Player01: {fileID: 1430033870}
   Player02: {fileID: 841802561}
   menu: {fileID: 1684198908}
-  switchPlayer01:
-    m_Name: Switch Player 01
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 45d63261-e7f1-436f-b12d-b293e9f64fdb
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 76712da3-6b8e-49f2-9bbd-05caef06737f
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 01
-      m_Flags: 0
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: Switch Player 02
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4389d7f6-0a72-40e5-b571-32ec41d3e89e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ebf95981-e270-4943-8fce-7230e6053ca1
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 02
-      m_Flags: 0
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!1001 &1269090931
@@ -22699,6 +22712,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Id
       value: d6bf9fa3-eac5-402e-8d3f-03d17d92aa28
       objectReference: {fileID: 0}
@@ -22761,6 +22778,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Action
       value: Speed Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ecf1faa9-7db8-4932-b3a3-0a86714c7e5b
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: switchControl.m_SingletonActionBindings.Array.data[0].m_Action
@@ -22859,6 +22880,10 @@ PrefabInstance:
       value: <Keyboard>/d
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: movementControls.m_SingletonActionBindings.Array.data[3].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -22905,6 +22930,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.data[4].m_Action
       value: Movement Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Start Stop Control
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8471138971397175359, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -29175,6 +29204,10 @@ PrefabInstance:
       value: Movement Controls
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_Name
+      value: Start Stop Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -29189,6 +29222,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Id
@@ -29253,6 +29290,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Action
       value: Speed Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 5e4fb661-efd0-4a3e-8429-23ebc5037634
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: switchControl.m_SingletonActionBindings.Array.data[0].m_Action
@@ -29351,6 +29392,10 @@ PrefabInstance:
       value: <Keyboard>/d
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: movementControls.m_SingletonActionBindings.Array.data[3].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -29397,6 +29442,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.data[4].m_Action
       value: Movement Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Start Stop Control
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8471138971397175359, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -30304,6 +30353,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Id
       value: d6bf9fa3-eac5-402e-8d3f-03d17d92aa28
       objectReference: {fileID: 0}
@@ -30366,6 +30419,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.data[0].m_Action
       value: Speed Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ecf1faa9-7db8-4932-b3a3-0a86714c7e5b
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: switchControl.m_SingletonActionBindings.Array.data[0].m_Action
@@ -30464,6 +30521,10 @@ PrefabInstance:
       value: <Keyboard>/d
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/r
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: movementControls.m_SingletonActionBindings.Array.data[3].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -30510,6 +30571,10 @@ PrefabInstance:
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _movementControls.m_SingletonActionBindings.Array.data[4].m_Action
       value: Movement Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Start Stop Control
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8471138971397175359, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -31629,40 +31694,6 @@ MonoBehaviour:
   Player01: {fileID: 833025818}
   Player02: {fileID: 1412569296}
   menu: {fileID: 1898979139}
-  switchPlayer01:
-    m_Name: Switch Player 01
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 535594a5-b4fd-4951-a778-7d1d478d28a2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 76712da3-6b8e-49f2-9bbd-05caef06737f
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 01
-      m_Flags: 0
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: Switch Player 02
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 52b2c56b-b50a-4a4e-b5c9-c656cb7612ff
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ebf95981-e270-4943-8fce-7230e6053ca1
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 02
-      m_Flags: 0
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!1 &1864683789
@@ -31712,40 +31743,6 @@ MonoBehaviour:
   Player01: {fileID: 1787591178}
   Player02: {fileID: 1476008759}
   menu: {fileID: 580435122}
-  switchPlayer01:
-    m_Name: Switch Player 01
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 5173b785-4959-439f-a315-2ce160c6fc7b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 76712da3-6b8e-49f2-9bbd-05caef06737f
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 01
-      m_Flags: 0
-    m_Flags: 0
-  switchPlayer02:
-    m_Name: Switch Player 02
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 9cfd1bb8-89cc-4637-a126-03b77b3786d4
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: ebf95981-e270-4943-8fce-7230e6053ca1
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Switch Player 02
-      m_Flags: 0
-    m_Flags: 0
   MaxScore: 0
   Record: 0
 --- !u!114 &1874703134
