@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Build
 Library/
+Temp/
+UserSettings/
