@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] MeshOrganiser meshOrganiser;
     [SerializeField] RewardOrganiser rewardOrganiser;
-    [SerializeField] SingleGraphEngine graphEngine;
 
     public List<Vector2> Points => tail.Points;
 
@@ -20,9 +19,6 @@ public class Player : MonoBehaviour
 
     internal void RefreshGraph()
     {
-        //graphEngine = new GraphEngine(points);
-        //meshGenerator.GenerateBlobs(graphEngine.ProcessGraph());
-
         meshOrganiser.RefreshBlobs();
         rewardOrganiser.RefreshRewardsState();
     }
