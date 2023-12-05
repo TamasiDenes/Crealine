@@ -188,11 +188,6 @@ namespace LinearAlgebra
     {
         public Vector2 intersectingPoint = Vector2.zero;
 
-        // szomszédok azzal a flaggel, hogy a line irányultságához viszonyítva merre kell haladni rajtuk
-        // true -> start point, tehát irányultsággal ellentétesen 0 index felé haladva lehet bejárni a gráfot
-        // false -> end point, tehát irányultsággal megegyezõen max index felé haladva lehet bejárni a gráfot 
-        public List<(Vector2, bool)> neighbours = new List<(Vector2, bool)>();
-
         // új rendszerben minden pont is keresztezõdés, már nem indexekben gondolkodunk
         public List<LineIntersector> neighbourInter = new List<LineIntersector>();
 
@@ -326,30 +321,6 @@ namespace LinearAlgebra
             return isBetween;
         }
 
-        internal void AddNeighbour(Line line1, Line line2)
-        {
-            neighbours = new List<(Vector2, bool)>();
-            neighbours.Add((line1.startPoint, false));
-
-            if(IsRight(line1.startPoint - intersectingPoint, line2.startPoint - intersectingPoint))
-            {
-                neighbours.Add((line2.startPoint, false));
-                neighbours.Add((line1.endPoint, true));
-                neighbours.Add((line2.endPoint, true));
-            }
-            else
-            {
-                neighbours.Add((line2.endPoint, true));
-                neighbours.Add((line1.endPoint, true));
-                neighbours.Add((line2.startPoint, false));
-            }
-        }
-
-        internal void AddNeighbour((Vector2, bool) neighbour)
-        {
-            neighbours.Add(neighbour);
-        }
-
         internal void AddNeighbour(LineIntersector neighbour)
         {
             neighbourInter.Add(neighbour);
@@ -372,26 +343,6 @@ namespace LinearAlgebra
                 neighbourInter.Add(line1.endPoint);
                 neighbourInter.Add(line2.startPoint);
             }
-        }
-
-        //ezek pont fordítva vannak mint intuitíve gondolnánk, mivel a szomszédságoknál kifele nézõ vektorokat hasonlítottunk össze
-        // itt viszont a beérkezõ vektorból indulva akarunk valamerre kanyarodni
-        internal (Vector2, bool) GetRightOuterNeighbour(Vector2 innerNeighbour)
-        {
-            int innerIndex = neighbours.FindIndex(v => innerNeighbour == v.Item1);
-
-            int outerIndex = innerIndex == 0 ? (neighbours.Count - 1) : (innerIndex - 1);
-
-            return neighbours[outerIndex];
-        }
-
-        internal (Vector2, bool) GetLeftOuterNeighbour(Vector2 innerNeighbour)
-        {
-            int innerIndex = neighbours.FindIndex(v => innerNeighbour == v.Item1);
-
-            int outerIndex = innerIndex == (neighbours.Count - 1) ? 0 : (innerIndex + 1);
-
-            return neighbours[outerIndex];
         }
 
         internal LineIntersector GetLeftOuterNeighbour(LineIntersector innerNeighbour)
@@ -441,20 +392,6 @@ namespace LinearAlgebra
 
             //Now we can decide if we should turn left or right
             return !(dotProduct > 0f);
-        }
-
-        internal bool HasElement(Vector2 vector)
-        {
-            return neighbours.Count(n => n.Item1 == vector) != 0;
-        }
-
-        public static void Reconnect(LineIntersector first, LineIntersector second, Vector2 firstOrigNeighbour, Vector2 secondOrigNeighbour)
-        {
-            int firstOrigIndex = first.neighbours.FindIndex(i => i.Item1 == firstOrigNeighbour);
-            int secondOrigIndex = second.neighbours.FindIndex(i => i.Item1 == secondOrigNeighbour);
-
-            first.neighbours[firstOrigIndex] = (second.intersectingPoint, first.neighbours[firstOrigIndex].Item2);
-            second.neighbours[secondOrigIndex] = (first.intersectingPoint, second.neighbours[secondOrigIndex].Item2);
         }
 
         public static void Reconnect(LineIntersector first, LineIntersector second, LineIntersector firstOrigNeighbour, LineIntersector secondOrigNeighbour)
