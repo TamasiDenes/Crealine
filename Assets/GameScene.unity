@@ -1999,10 +1999,10 @@ MonoBehaviour:
       m_Action: Start Stop Control
       m_Flags: 0
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &100118290
 Rigidbody2D:
   serializedVersion: 4
@@ -4824,6 +4824,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 620063543}
     - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
+      propertyPath: separateMeshes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
       propertyPath: separeteMeshes
       value: 1
       objectReference: {fileID: 0}
@@ -7352,6 +7356,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 277791696}
     - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
+      propertyPath: separateMeshes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
       propertyPath: separeteMeshes
       value: 1
       objectReference: {fileID: 0}
@@ -9321,10 +9329,10 @@ MonoBehaviour:
       m_Action: Start Stop Control
       m_Flags: 0
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &566065627
 Rigidbody2D:
   serializedVersion: 4
@@ -10248,10 +10256,10 @@ MonoBehaviour:
       m_Action: Start Stop Control
       m_Flags: 0
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &631791655
 Rigidbody2D:
   serializedVersion: 4
@@ -11681,6 +11689,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 786208683}
     - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
+      propertyPath: separateMeshes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
       propertyPath: separeteMeshes
       value: 1
       objectReference: {fileID: 0}
@@ -13109,10 +13121,10 @@ MonoBehaviour:
       m_Action: Start Stop Control
       m_Flags: 0
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &778436443
 Rigidbody2D:
   serializedVersion: 4
@@ -13646,10 +13658,10 @@ MonoBehaviour:
       m_Action: Start Stop Control
       m_Flags: 0
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &807551302
 Rigidbody2D:
   serializedVersion: 4
@@ -16323,6 +16335,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 514918254}
     - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
+      propertyPath: separateMeshes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
       propertyPath: separeteMeshes
       value: 1
       objectReference: {fileID: 0}
@@ -17317,10 +17333,10 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &1010966041
 Rigidbody2D:
   serializedVersion: 4
@@ -18990,10 +19006,10 @@ MonoBehaviour:
       m_Action: Start Stop Control
       m_Flags: 0
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 1
-  _isMoving: 1
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &1167469873
 Rigidbody2D:
   serializedVersion: 4
@@ -25836,6 +25852,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1299536976}
     - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
+      propertyPath: separateMeshes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
       propertyPath: separeteMeshes
       value: 1
       objectReference: {fileID: 0}
@@ -29966,6 +29986,10 @@ PrefabInstance:
       value: Movement Controls
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_Name
+      value: Start Stop Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -34073,6 +34097,10 @@ PrefabInstance:
       propertyPath: wallManager
       value: 
       objectReference: {fileID: 1791948298}
+    - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
+      propertyPath: separateMeshes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8104637264155560862, guid: 2873db362029c784eb77b5458c4458a3, type: 3}
       propertyPath: separeteMeshes
       value: 1
