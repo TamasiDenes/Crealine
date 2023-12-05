@@ -30,17 +30,17 @@ namespace LinearAlgebra
         }
 
         // igazából a baseInterList-et szükségtelen visszaadni, de így az is értelmes és használható
-        (List<LineIntersector>,List<InterLine>) CreatePointsAndLines()
+        (List<Intersection>,List<IntersectionLine>) CreatePointsAndLines()
         {
-            List<LineIntersector> baseInterList = new List<LineIntersector>();
-            List<InterLine> lines = new List<InterLine>();
+            List<Intersection> baseInterList = new List<Intersection>();
+            List<IntersectionLine> lines = new List<IntersectionLine>();
 
             for (int i = 0; i < points.Count; i++)
             {
-                List<LineIntersector> currentPointsInter = new List<LineIntersector>();
+                List<Intersection> currentPointsInter = new List<Intersection>();
                 for (int j = 0; j < points[i].Count; j++)
                 {
-                    LineIntersector lineIntersector = new LineIntersector();
+                    Intersection lineIntersector = new Intersection();
                     lineIntersector.intersectingPoint = points[i][j];
                     currentPointsInter.Add(lineIntersector);
                 }
@@ -64,12 +64,12 @@ namespace LinearAlgebra
         }
 
         // különbség a base-hez képest: csak az adott pontok között csinál vonalakat
-        List<InterLine> CreateInterLines(List<LineIntersector> currentPointInterList)
+        List<IntersectionLine> CreateInterLines(List<Intersection> currentPointInterList)
         {
-            List<InterLine> result = new List<InterLine>();
+            List<IntersectionLine> result = new List<IntersectionLine>();
             for(int i = 0; i < currentPointInterList.Count - 1; i++)
             {
-                result.Add( new InterLine()
+                result.Add( new IntersectionLine()
                 { 
                     line = new Line() { startPoint = currentPointInterList[i].intersectingPoint, endPoint = currentPointInterList[i + 1].intersectingPoint},
                     startPoint = currentPointInterList[i], 

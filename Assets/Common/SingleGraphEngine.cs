@@ -32,13 +32,13 @@ namespace LinearAlgebra
         }
 
         // szekvenciálisan határozzuk meg a pontok szoszédait
-        List<LineIntersector> CreatePointIntersections()
+        List<Intersection> CreatePointIntersections()
         {
-            List<LineIntersector> pointsInter = new List<LineIntersector>();
+            List<Intersection> pointsInter = new List<Intersection>();
 
             for (int i = 0; i < points.Count; i++)
             {
-                LineIntersector lineIntersector = new LineIntersector();
+                Intersection lineIntersector = new Intersection();
                 lineIntersector.intersectingPoint = points[i];
                 pointsInter.Add(lineIntersector);
             }

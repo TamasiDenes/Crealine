@@ -14,11 +14,11 @@ namespace LinearAlgebra
     {
         // származtatott hálózat:
         // tartalmazza az eredeti hálózat pontjait eredeti szomszédságaikkal:
-        protected List<LineIntersector> baseInterList = new List<LineIntersector>();
+        protected List<Intersection> baseInterList = new List<Intersection>();
         // eredeti hálózat pontjai közötti vonalakat tartalmazza - amik a végeiken referálnak a pontokra is:
-        protected List<InterLine> lines = new List<InterLine>();
+        protected List<IntersectionLine> lines = new List<IntersectionLine>();
         // a megtalált keresztezõdéseket is tartalmazó pontok (minden benne van):
-        protected List<LineIntersector> fullInterList = new List<LineIntersector>();
+        protected List<Intersection> fullInterList = new List<Intersection>();
 
         // baseInterList -> lines -> fullInterList
         public abstract void PrepareGraph();
@@ -48,14 +48,14 @@ namespace LinearAlgebra
         {
             for (int j = 0; j < lines.Count; j++)
             {
-                InterLine interLine = lines[j];
+                IntersectionLine interLine = lines[j];
 
-                List<LineIntersector> relatedIntersections = new List<LineIntersector>();
+                List<Intersection> relatedIntersections = new List<Intersection>();
 
                 // adott vonalhoz tartozó keresztezõdések, pontok
-                foreach (LineIntersector inter in fullInterList)
+                foreach (Intersection inter in fullInterList)
                 {
-                    if (LineIntersector.IsPointInLine(interLine.line, inter.intersectingPoint))
+                    if (Intersection.IsPointInLine(interLine.line, inter.intersectingPoint))
                     {
                         relatedIntersections.Add(inter);
                     }
@@ -67,8 +67,8 @@ namespace LinearAlgebra
                 // végeket összekötjük az elsõ, utolsó keresztezõdéssel
                 if (relatedIntersections.Count > 0)
                 {
-                    LineIntersector.Reconnect(interLine.startPoint, relatedIntersections.First(), interLine.endPoint, interLine.startPoint);
-                    LineIntersector.Reconnect(relatedIntersections.Last(), interLine.endPoint, interLine.endPoint, interLine.startPoint);
+                    Intersection.Reconnect(interLine.startPoint, relatedIntersections.First(), interLine.endPoint, interLine.startPoint);
+                    Intersection.Reconnect(relatedIntersections.Last(), interLine.endPoint, interLine.endPoint, interLine.startPoint);
                 }
 
                 // ha nincs legalább kettõ találat, nincs változtatás
@@ -78,26 +78,26 @@ namespace LinearAlgebra
                 // köztes keresztezõdéseket sorban összekötjük
                 for (int i = 0; i < relatedIntersections.Count - 1; i++)
                 {
-                    LineIntersector.Reconnect(relatedIntersections[i], relatedIntersections[i + 1], interLine.endPoint, interLine.startPoint);
+                    Intersection.Reconnect(relatedIntersections[i], relatedIntersections[i + 1], interLine.endPoint, interLine.startPoint);
                 }
             }
         }
 
         // végig megyünk a vonalakon és nézzük, hogy bármelyik másik nem közvetlen szomszédos vonallal van-e metszéspont
         // ha igen, felvesszük a keresztezõdések közé, és egyelõre minden ilyen keresztezõdésnek az eredeti vonal végpontjait adom meg szomszédnak
-        protected List<LineIntersector> AddIntersections()
+        protected List<Intersection> AddIntersections()
         {
-            List<LineIntersector> result = new List<LineIntersector>();
+            List<Intersection> result = new List<Intersection>();
 
             // azért így, mert a szomszédosok mindig metszik egymást de az nem jelent keresztezõdést
             for (int i = 0; i < lines.Count - 2; i++)
             {
                 for (int j = i + 2; j < lines.Count; j++)
                 {
-                    (bool, Vector2) interPoint = LineIntersector.IsIntersecting(lines[i].line, lines[j].line);
+                    (bool, Vector2) interPoint = Intersection.IsIntersecting(lines[i].line, lines[j].line);
                     if (interPoint.Item1)
                     {
-                        LineIntersector intersect = new LineIntersector() { intersectingPoint = interPoint.Item2 };
+                        Intersection intersect = new Intersection() { intersectingPoint = interPoint.Item2 };
 
                         intersect.AddNeighbour(lines[i], lines[j]);
 
@@ -155,7 +155,7 @@ namespace LinearAlgebra
         }
 
         // adott keresztezõdés minden szomszédjából elindulva keres blobokat
-        protected List<List<Vector2>> ProcessInterPath(LineIntersector inter)
+        protected List<List<Vector2>> ProcessInterPath(Intersection inter)
         {
             List<List<Vector2>> blobList = new List<List<Vector2>>();
 
@@ -172,12 +172,12 @@ namespace LinearAlgebra
         }
 
         // az eredeti pontok közötti vonalakat kinyerjük
-        protected List<InterLine> CreateInterLines()
+        protected List<IntersectionLine> CreateInterLines()
         {
-            List<InterLine> result = new List<InterLine>();
+            List<IntersectionLine> result = new List<IntersectionLine>();
             for (int i = 0; i < baseInterList.Count - 1; i++)
             {
-                result.Add(new InterLine()
+                result.Add(new IntersectionLine()
                 {
                     line = new Line() { startPoint = baseInterList[i].intersectingPoint, endPoint = baseInterList[i + 1].intersectingPoint },
                     startPoint = baseInterList[i],
@@ -189,18 +189,18 @@ namespace LinearAlgebra
         }
 
         // adott keresztezõdés adott szomszédjából elindulva (mindig balra kanyarodva) keres blobot amit aztán a kívánt orientációval visszaad 
-        List<Vector2> ProcessPath(LineIntersector origIntersect, LineIntersector origNeighbour)
+        List<Vector2> ProcessPath(Intersection origIntersect, Intersection origNeighbour)
         {
             List<Vector2> resultBlob = new List<Vector2>();
 
-            LineIntersector currentNeighbour = origNeighbour;
-            LineIntersector prevNeighbour = origIntersect;
+            Intersection currentNeighbour = origNeighbour;
+            Intersection prevNeighbour = origIntersect;
 
             float angleInDeg = 0;
 
             do
             {
-                LineIntersector nextNeighbour = null;
+                Intersection nextNeighbour = null;
 
                 if (currentNeighbour.neighbourInter.Count == 1)
                 {
@@ -212,13 +212,13 @@ namespace LinearAlgebra
                     {
                         // minden sima elemet kiveszünk a blob-ból
                         resultBlob.Remove(nextNeighbour.intersectingPoint);
-                        LineIntersector nextTemp = nextNeighbour.GetOppositeNeighbour(currentNeighbour);
+                        Intersection nextTemp = nextNeighbour.GetOppositeNeighbour(currentNeighbour);
                         currentNeighbour = nextNeighbour;
                         nextNeighbour = nextTemp;
                     }
 
                     // és a keresztezõdésnél balra kanyarodva folytathatjuk az utunk
-                    LineIntersector next = nextNeighbour.GetLeftOuterNeighbour(currentNeighbour);
+                    Intersection next = nextNeighbour.GetLeftOuterNeighbour(currentNeighbour);
                     currentNeighbour = nextNeighbour;
                     nextNeighbour = next;
                 }

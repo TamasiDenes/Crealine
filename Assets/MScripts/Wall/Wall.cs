@@ -45,7 +45,7 @@ public class Wall : MonoBehaviour
 
         for (int i = 0; i < points.Count - 1; i++)
         {
-            if (LineIntersector.IsPointInLine(new Line() { startPoint = points[i], endPoint = points[i + 1] }, point))
+            if (Intersection.IsPointInLine(new Line() { startPoint = points[i], endPoint = points[i + 1] }, point))
                 return true;
         }
 

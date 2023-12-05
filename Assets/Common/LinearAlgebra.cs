@@ -175,21 +175,14 @@ namespace LinearAlgebra
 
             return isBetween;
         }
-
-
-        public void OnDrawGizmos()
-        {
-            if(intersectingPoint != Vector2.zero)
-                Gizmos.DrawSphere(intersectingPoint, 0.1f);
-        }
     }
 
-    public class LineIntersector
+    public class Intersection
     {
         public Vector2 intersectingPoint = Vector2.zero;
 
         // új rendszerben minden pont is keresztezõdés, már nem indexekben gondolkodunk
-        public List<LineIntersector> neighbourInter = new List<LineIntersector>();
+        public List<Intersection> neighbourInter = new List<Intersection>();
 
         //Check if the lines are interesecting in 2d space
         public static (bool,Vector2) IsIntersecting(Line l1, Line l2)
@@ -321,14 +314,14 @@ namespace LinearAlgebra
             return isBetween;
         }
 
-        internal void AddNeighbour(LineIntersector neighbour)
+        internal void AddNeighbour(Intersection neighbour)
         {
             neighbourInter.Add(neighbour);
         }
 
-        internal void AddNeighbour(InterLine line1, InterLine line2)
+        internal void AddNeighbour(IntersectionLine line1, IntersectionLine line2)
         {
-            neighbourInter = new List<LineIntersector>();
+            neighbourInter = new List<Intersection>();
             neighbourInter.Add(line1.startPoint);
 
             if (IsRight(line1.line.startPoint - intersectingPoint, line2.line.startPoint - intersectingPoint))
@@ -345,7 +338,7 @@ namespace LinearAlgebra
             }
         }
 
-        internal LineIntersector GetLeftOuterNeighbour(LineIntersector innerNeighbour)
+        internal Intersection GetLeftOuterNeighbour(Intersection innerNeighbour)
         {
             int innerIndex = neighbourInter.FindIndex(n => innerNeighbour == n);
 
@@ -354,7 +347,7 @@ namespace LinearAlgebra
             return neighbourInter[outerIndex];
         }
 
-        internal  LineIntersector GetOppositeNeighbour(LineIntersector innerNeighbour)
+        internal  Intersection GetOppositeNeighbour(Intersection innerNeighbour)
         {
             int innerIndex = neighbourInter.FindIndex(n => innerNeighbour == n);
 
@@ -394,7 +387,7 @@ namespace LinearAlgebra
             return !(dotProduct > 0f);
         }
 
-        public static void Reconnect(LineIntersector first, LineIntersector second, LineIntersector firstOrigNeighbour, LineIntersector secondOrigNeighbour)
+        public static void Reconnect(Intersection first, Intersection second, Intersection firstOrigNeighbour, Intersection secondOrigNeighbour)
         {
             int firstOrigIndex = first.neighbourInter.FindIndex(i => i == firstOrigNeighbour);
             int secondOrigIndex = second.neighbourInter.FindIndex(i => i == secondOrigNeighbour);
@@ -410,11 +403,11 @@ namespace LinearAlgebra
         public Vector2 endPoint;
     }
 
-    public class InterLine
+    public class IntersectionLine
     {
         public Line line;
 
-        public LineIntersector startPoint;
-        public LineIntersector endPoint;
+        public Intersection startPoint;
+        public Intersection endPoint;
     }
 }
