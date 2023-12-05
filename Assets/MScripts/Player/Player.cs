@@ -22,7 +22,10 @@ public class Player : MonoBehaviour
     internal void RefreshNeck(Vector2 point) => snakeNeck.Refresh(point);
     internal Vector2 GetSnakePosition() => snake.transform.position;
 
-
+    internal void SwitchMoving()
+    {
+        snake.SwitchMoving();
+    }
     internal void RefreshGraph()
     {
         //graphEngine = new GraphEngine(points);

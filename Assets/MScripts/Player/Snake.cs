@@ -103,4 +103,9 @@ public class Snake : MonoBehaviour
 
         return horizontal;
     }
+
+    internal void SwitchMoving()
+    {
+        _isMoving = !_isMoving;
+    }
 }
