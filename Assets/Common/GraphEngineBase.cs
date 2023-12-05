@@ -80,8 +80,6 @@ namespace LinearAlgebra
                 {
                     LineIntersector.Reconnect(relatedIntersections[i], relatedIntersections[i + 1], interLine.endPoint, interLine.startPoint);
                 }
-
-                // LineIntersector.Reconnect(relatedIntersections[relatedIntersections.Count - 2], relatedIntersections.Last(), interLine.endPoint, interLine.startPoint);
             }
         }
 
