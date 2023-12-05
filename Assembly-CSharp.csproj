@@ -75,8 +75,6 @@
     <Compile Include="Assets\MScripts\MenuSystem\LayerMenu.cs" />
     <Compile Include="Assets\MScripts\MeshGenerator.cs" />
     <Compile Include="Assets\MScripts\MeshOrganiser.cs" />
-    <Compile Include="Assets\MScripts\Obsolate\LineSeqIntersection.cs" />
-    <Compile Include="Assets\MScripts\Obsolate\NewLineSeqInter.cs" />
     <Compile Include="Assets\MScripts\Player\Player.cs" />
     <Compile Include="Assets\MScripts\Player\Snake.cs" />
     <Compile Include="Assets\MScripts\Player\Tail.cs" />
