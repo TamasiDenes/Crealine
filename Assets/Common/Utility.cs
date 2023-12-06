@@ -55,21 +55,6 @@ namespace Assets
             this.v3 = new Vertex(v3);
         }
 
-        public Triangle(HalfEdge halfEdge)
-        {
-            this.halfEdge = halfEdge;
-        }
-
-        //Change orientation of triangle from cw -> ccw or ccw -> cw
-        public void ChangeOrientation()
-        {
-            Vertex temp = this.v1;
-
-            this.v1 = this.v2;
-
-            this.v2 = temp;
-        }
-
         float sign(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
@@ -88,20 +73,6 @@ namespace Assets
             has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
 
             return !(has_neg && has_pos);
-        }
-
-        public bool PointInTriangleStrict(Vector3 pt)
-        {
-            float d1, d2, d3;
-
-            d1 = sign(pt, v1.position, v2.position);
-            d2 = sign(pt, v2.position, v3.position);
-            d3 = sign(pt, v3.position, v1.position);
-
-            if (d1 == 0 || d2 == 0 || d3 == 0)
-                return false;
-            else
-                return PointInTriangle(pt);
         }
     }
 
@@ -171,15 +142,63 @@ namespace Assets
             return isClockWise;
         }
 
-        //Where is p in relation to a-b
-        // < 0 -> to the right
-        // = 0 -> on the line
-        // > 0 -> to the left
-        public static float IsAPointLeftOfVectorOrOnTheLine(Vector2 a, Vector2 b, Vector2 p)
+        public static bool IsRight(Vector2 youDir, Vector2 waypointDir)
         {
-            float determinant = (a.x - p.x) * (b.y - p.y) - (a.y - p.y) * (b.x - p.x);
 
-            return determinant;
+            //The cross product between these vectors
+            Vector3 crossProduct = Vector3.Cross(youDir, waypointDir);
+
+            //The dot product between the your up vector and the cross product
+            //This can be said to be a volume that can be negative
+            float dotProduct = Vector3.Dot(crossProduct, new Vector3(0, 0, 1));
+
+            //Now we can decide if we should turn left or right
+            return !(dotProduct > 0f);
+        }
+        //Are 2 vectors parallel?
+        public static bool IsParallel(Vector2 v1, Vector2 v2)
+        {
+            //2 vectors are parallel if the angle between the vectors are 0 or 180 degrees
+            if (Vector2.Angle(v1, v2) == 0f || Vector2.Angle(v1, v2) == 180f)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        //Are 2 vectors orthogonal?
+        public static bool IsOrthogonal(Vector2 v1, Vector2 v2)
+        {
+            //2 vectors are orthogonal is the dot product is 0
+            //We have to check if close to 0 because of floating numbers
+            if (Mathf.Abs(Vector2.Dot(v1, v2)) < 0.000001f)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        //Is a point c between 2 other points a and b?
+        public static bool IsBetween(Vector2 a, Vector2 b, Vector2 c)
+        {
+            bool isBetween = false;
+
+            //Entire line segment
+            Vector2 ab = b - a;
+            //The intersection and the first point
+            Vector2 ac = c - a;
+
+            //Need to check 2 things: 
+            //1. If the vectors are pointing in the same direction = if the dot product is positive
+            //2. If the length of the vector between the intersection and the first point is smaller than the entire line
+            if (Vector2.Dot(ab, ac) > 0f && ab.sqrMagnitude >= ac.sqrMagnitude)
+            {
+                isBetween = true;
+            }
+
+            return isBetween;
         }
     }
 

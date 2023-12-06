@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Assets;
 
 namespace LinearAlgebra
 {
@@ -28,7 +29,7 @@ namespace LinearAlgebra
             neighbours = new List<Intersection>();
             neighbours.Add(line1.Start);
 
-            if (VectorFunctions.IsRight(line1.Line.Start - Point, line2.Line.Start - Point))
+            if (Geometry.IsRight(line1.Line.Start - Point, line2.Line.Start - Point))
             {
                 neighbours.Add(line2.Start);
                 neighbours.Add(line1.End);
@@ -130,7 +131,7 @@ namespace LinearAlgebra
 
 
             //Step 2: are the lines parallel? -> no solutions
-            if (VectorFunctions.IsParallel(l1_normal, l2_normal))
+            if (Geometry.IsParallel(l1_normal, l2_normal))
             {
                 return (false, default(Vector2));
             }
@@ -138,7 +139,7 @@ namespace LinearAlgebra
 
             //Step 3: are the lines the same line? -> infinite amount of solutions
             //Pick one point on each line and test if the vector between the points is orthogonal to one of the normals
-            if (VectorFunctions.IsOrthogonal(l1.Start - l2.Start, l1_normal))
+            if (Geometry.IsOrthogonal(l1.Start - l2.Start, l1_normal))
             {
                 //Return false anyway
                 return (false, default(Vector2));
@@ -153,7 +154,7 @@ namespace LinearAlgebra
 
 
             //Step 5: but we have line segments so we have to check if the intersection point is within the segment
-            if (VectorFunctions.IsBetween(l1.Start, l1.End, intersectPoint) && VectorFunctions.IsBetween(l2.Start, l2.End, intersectPoint))
+            if (Geometry.IsBetween(l1.Start, l1.End, intersectPoint) && Geometry.IsBetween(l2.Start, l2.End, intersectPoint))
             {
                 return (true, intersectPoint);
             }
@@ -181,7 +182,7 @@ namespace LinearAlgebra
             if (Math.Abs(k1 - pointK) > 0.000001)
                 return false;
 
-            if (VectorFunctions.IsBetween(line.Start, line.End, point))
+            if (Geometry.IsBetween(line.Start, line.End, point))
                 return true;
             else
                 return false;
@@ -206,65 +207,4 @@ namespace LinearAlgebra
         public Intersection End => end;
     }
 
-    public static class VectorFunctions
-    {
-        public static bool IsRight(Vector2 youDir, Vector2 waypointDir)
-        {
-
-            //The cross product between these vectors
-            Vector3 crossProduct = Vector3.Cross(youDir, waypointDir);
-
-            //The dot product between the your up vector and the cross product
-            //This can be said to be a volume that can be negative
-            float dotProduct = Vector3.Dot(crossProduct, new Vector3(0, 0, 1));
-
-            //Now we can decide if we should turn left or right
-            return !(dotProduct > 0f);
-        }
-        //Are 2 vectors parallel?
-        public static bool IsParallel(Vector2 v1, Vector2 v2)
-        {
-            //2 vectors are parallel if the angle between the vectors are 0 or 180 degrees
-            if (Vector2.Angle(v1, v2) == 0f || Vector2.Angle(v1, v2) == 180f)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        //Are 2 vectors orthogonal?
-        public static bool IsOrthogonal(Vector2 v1, Vector2 v2)
-        {
-            //2 vectors are orthogonal is the dot product is 0
-            //We have to check if close to 0 because of floating numbers
-            if (Mathf.Abs(Vector2.Dot(v1, v2)) < 0.000001f)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        //Is a point c between 2 other points a and b?
-        public static bool IsBetween(Vector2 a, Vector2 b, Vector2 c)
-        {
-            bool isBetween = false;
-
-            //Entire line segment
-            Vector2 ab = b - a;
-            //The intersection and the first point
-            Vector2 ac = c - a;
-
-            //Need to check 2 things: 
-            //1. If the vectors are pointing in the same direction = if the dot product is positive
-            //2. If the length of the vector between the intersection and the first point is smaller than the entire line
-            if (Vector2.Dot(ab, ac) > 0f && ab.sqrMagnitude >= ac.sqrMagnitude)
-            {
-                isBetween = true;
-            }
-
-            return isBetween;
-        }
-    }
 }
