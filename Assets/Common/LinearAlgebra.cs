@@ -28,7 +28,7 @@ namespace LinearAlgebra
             neighbours = new List<Intersection>();
             neighbours.Add(line1.Start);
 
-            if (IsRight(line1.Line.Start - Point, line2.Line.Start - Point))
+            if (VectorFunctions.IsRight(line1.Line.Start - Point, line2.Line.Start - Point))
             {
                 neighbours.Add(line2.Start);
                 neighbours.Add(line1.End);
@@ -78,20 +78,6 @@ namespace LinearAlgebra
                         return neighbours[0];        
                 }
             }
-        }
-
-        static bool IsRight(Vector2 youDir, Vector2 waypointDir)
-        {
-
-            //The cross product between these vectors
-            Vector3 crossProduct = Vector3.Cross(youDir, waypointDir);
-
-            //The dot product between the your up vector and the cross product
-            //This can be said to be a volume that can be negative
-            float dotProduct = Vector3.Dot(crossProduct, new Vector3(0, 0, 1));
-
-            //Now we can decide if we should turn left or right
-            return !(dotProduct > 0f);
         }
 
         public static void Reconnect(Intersection first, Intersection second, Intersection firstOrigNeighbour, Intersection secondOrigNeighbour)
@@ -222,6 +208,19 @@ namespace LinearAlgebra
 
     public static class VectorFunctions
     {
+        public static bool IsRight(Vector2 youDir, Vector2 waypointDir)
+        {
+
+            //The cross product between these vectors
+            Vector3 crossProduct = Vector3.Cross(youDir, waypointDir);
+
+            //The dot product between the your up vector and the cross product
+            //This can be said to be a volume that can be negative
+            float dotProduct = Vector3.Dot(crossProduct, new Vector3(0, 0, 1));
+
+            //Now we can decide if we should turn left or right
+            return !(dotProduct > 0f);
+        }
         //Are 2 vectors parallel?
         public static bool IsParallel(Vector2 v1, Vector2 v2)
         {
