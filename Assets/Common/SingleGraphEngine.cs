@@ -9,8 +9,7 @@ using static Unity.Collections.AllocatorManager;
 
 namespace LinearAlgebra
 {
-    // jelenleg nem használjuk
-    // azt feltételezi hogy a kapott pontok egy szekvenciát alkotnak (pl egy játékos, vagy egy egybefüggõ lineáris fal)
+    // assume that the given points are in one sequence (player's snake, or one wall)
     public class SingleGraphEngine : GraphEngineBase
     {
         public SingleGraphEngine(List<Vector2> pointList)
@@ -18,20 +17,20 @@ namespace LinearAlgebra
             points = pointList;
         }
 
-        // kapott pontok:
+        // given points
         List<Vector2> points = new List<Vector2>();
 
         public override void PrepareGraph()
         {
-            baseInterList = CreatePointIntersections();
-            lines = CreateInterLines();
+            origIntersections = CreatePointIntersections();
+            origInterLines = CreateInterLines();
 
-            fullInterList = AddIntersections();
+            completeIntersections = AddIntersections();
 
             ReconnectIntersections();
         }
 
-        // szekvenciálisan határozzuk meg a pontok szoszédait
+        // set point neighbours based on the sequence
         List<Intersection> CreatePointIntersections()
         {
             List<Intersection> pointsInter = new List<Intersection>();

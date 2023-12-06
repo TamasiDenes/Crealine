@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace LinearAlgebra
 {
-    // több egymástól független szekvenciális pontot képes kezelni (pl mindkét játékos + falak)
+    // can handle more independent sequence (two player and the walls)
     public class MultiGraphEngine : GraphEngineBase
     {
         public MultiGraphEngine(List<List<Vector2>> pointList) 
@@ -16,23 +16,20 @@ namespace LinearAlgebra
             points = pointList;
         }
 
-        // kapott pontok:
         List<List<Vector2>> points = new List<List<Vector2>>();
 
 
         public override void PrepareGraph()
         {
-            (baseInterList,lines) = CreatePointsAndLines();
+            origInterLines = CreatePointsAndLines();
 
-            fullInterList = AddIntersections();
+            completeIntersections = AddIntersections();
 
             ReconnectIntersections();
         }
 
-        // igazából a baseInterList-et szükségtelen visszaadni, de így az is értelmes és használható
-        (List<Intersection>,List<IntersectionLine>) CreatePointsAndLines()
+        List<IntersectionLine> CreatePointsAndLines()
         {
-            List<Intersection> baseInterList = new List<Intersection>();
             List<IntersectionLine> lines = new List<IntersectionLine>();
 
             for (int i = 0; i < points.Count; i++)
@@ -55,14 +52,11 @@ namespace LinearAlgebra
                 }
 
                 lines.AddRange(CreateInterLines(currentPointsInter));
-
-                baseInterList.AddRange(currentPointsInter);
             }
 
-            return (baseInterList,lines);
+            return lines;
         }
 
-        // különbség a base-hez képest: csak az adott pontok között csinál vonalakat
         List<IntersectionLine> CreateInterLines(List<Intersection> currentPointInterList)
         {
             List<IntersectionLine> result = new List<IntersectionLine>();
