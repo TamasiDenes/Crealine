@@ -41,17 +41,9 @@ namespace LinearAlgebra
             lineRenderer1.material.color = Color.red;
             lineRenderer2.material.color = Color.red;
 
-            Line l1 = new Line()
-            {
-                startPoint = L1_start.position,
-                endPoint = L1_end.position,
-            };
+            Line l1 = new Line(L1_start.position, L1_end.position);
 
-            Line l2 = new Line()
-            {
-                startPoint = L2_start.position,
-                endPoint = L2_end.position,
-            };
+            Line l2 = new Line(L2_start.position, L2_end.position);
 
             //Change color if they intersect
             if (IsIntersecting(l1, l2))
@@ -70,8 +62,8 @@ namespace LinearAlgebra
 
 
             //Direction of the lines
-            Vector2 l1_dir = (l1.endPoint - l1.startPoint).normalized;
-            Vector2 l2_dir = (l2.endPoint - l2.startPoint).normalized;
+            Vector2 l1_dir = (l1.End - l1.Start).normalized;
+            Vector2 l2_dir = (l2.End - l2.Start).normalized;
 
             //If we know the direction we can get the normal vector to each line
             Vector2 l1_normal = new Vector2(-l1_dir.y, l1_dir.x);
@@ -87,8 +79,8 @@ namespace LinearAlgebra
             float D = l2_normal.y;
 
             //To get k we just use one point on the line
-            float k1 = (A * l1.startPoint.x) + (B * l1.startPoint.y);
-            float k2 = (C * l2.startPoint.x) + (D * l2.startPoint.y);
+            float k1 = (A * l1.Start.x) + (B * l1.Start.y);
+            float k2 = (C * l2.Start.x) + (D * l2.Start.y);
 
 
             //Step 2: are the lines parallel? -> no solutions
@@ -102,7 +94,7 @@ namespace LinearAlgebra
 
             //Step 3: are the lines the same line? -> infinite amount of solutions
             //Pick one point on each line and test if the vector between the points is orthogonal to one of the normals
-            if (IsOrthogonal(l1.startPoint - l2.startPoint, l1_normal))
+            if (IsOrthogonal(l1.Start - l2.Start, l1_normal))
             {
                 Debug.Log("Same line so infinite amount of solutions!");
 
@@ -119,7 +111,7 @@ namespace LinearAlgebra
 
 
             //Step 5: but we have line segments so we have to check if the intersection point is within the segment
-            if (IsBetween(l1.startPoint, l1.endPoint, intersectPoint) && IsBetween(l2.startPoint, l2.endPoint, intersectPoint))
+            if (IsBetween(l1.Start, l1.End, intersectPoint) && IsBetween(l2.Start, l2.End, intersectPoint))
             {
                 Debug.Log("We have an intersection point!");
                 intersectingPoint = intersectPoint;
@@ -188,8 +180,8 @@ namespace LinearAlgebra
         public static (bool,Vector2) IsIntersecting(Line l1, Line l2)
         {
             //Direction of the lines
-            Vector2 l1_dir = (l1.endPoint - l1.startPoint).normalized;
-            Vector2 l2_dir = (l2.endPoint - l2.startPoint).normalized;
+            Vector2 l1_dir = (l1.End - l1.Start).normalized;
+            Vector2 l2_dir = (l2.End - l2.Start).normalized;
 
             //If we know the direction we can get the normal vector to each line
             Vector2 l1_normal = new Vector2(-l1_dir.y, l1_dir.x);
@@ -205,8 +197,8 @@ namespace LinearAlgebra
             float D = l2_normal.y;
 
             //To get k we just use one point on the line
-            float k1 = (A * l1.startPoint.x) + (B * l1.startPoint.y);
-            float k2 = (C * l2.startPoint.x) + (D * l2.startPoint.y);
+            float k1 = (A * l1.Start.x) + (B * l1.Start.y);
+            float k2 = (C * l2.Start.x) + (D * l2.Start.y);
 
 
             //Step 2: are the lines parallel? -> no solutions
@@ -218,7 +210,7 @@ namespace LinearAlgebra
 
             //Step 3: are the lines the same line? -> infinite amount of solutions
             //Pick one point on each line and test if the vector between the points is orthogonal to one of the normals
-            if (IsOrthogonal(l1.startPoint - l2.startPoint, l1_normal))
+            if (IsOrthogonal(l1.Start - l2.Start, l1_normal))
             {
                 //Return false anyway
                 return (false, default(Vector2));
@@ -233,7 +225,7 @@ namespace LinearAlgebra
 
 
             //Step 5: but we have line segments so we have to check if the intersection point is within the segment
-            if (IsBetween(l1.startPoint, l1.endPoint, intersectPoint) && IsBetween(l2.startPoint, l2.endPoint, intersectPoint))
+            if (IsBetween(l1.Start, l1.End, intersectPoint) && IsBetween(l2.Start, l2.End, intersectPoint))
             {
                 return (true, intersectPoint);
             }
@@ -244,7 +236,7 @@ namespace LinearAlgebra
         public static bool IsPointInLine(Line line, Vector2 point)
         {
             //Direction of the lines
-            Vector2 line_dir = (line.endPoint - line.startPoint).normalized;
+            Vector2 line_dir = (line.End - line.Start).normalized;
 
             //If we know the direction we can get the normal vector to each line
             Vector2 line_normal = new Vector2(-line_dir.y, line_dir.x);
@@ -254,7 +246,7 @@ namespace LinearAlgebra
             float B = line_normal.y;
 
             //To get k we just use one point on the line
-            float k1 = (A * line.startPoint.x) + (B * line.startPoint.y);
+            float k1 = (A * line.Start.x) + (B * line.Start.y);
 
             float pointK = A * point.x + B * point.y;
 
@@ -262,7 +254,7 @@ namespace LinearAlgebra
             if (Math.Abs(k1 - pointK) > 0.000001)
                 return false;
 
-            if (IsBetween(line.startPoint, line.endPoint, point))
+            if (IsBetween(line.Start, line.End, point))
                 return true;
             else
                 return false;
@@ -322,19 +314,19 @@ namespace LinearAlgebra
         internal void AddNeighbour(IntersectionLine line1, IntersectionLine line2)
         {
             neighbourInter = new List<Intersection>();
-            neighbourInter.Add(line1.startPoint);
+            neighbourInter.Add(line1.Start);
 
-            if (IsRight(line1.line.startPoint - intersectingPoint, line2.line.startPoint - intersectingPoint))
+            if (IsRight(line1.Line.Start - intersectingPoint, line2.Line.Start - intersectingPoint))
             {
-                neighbourInter.Add(line2.startPoint);
-                neighbourInter.Add(line1.endPoint);
-                neighbourInter.Add(line2.endPoint);
+                neighbourInter.Add(line2.Start);
+                neighbourInter.Add(line1.End);
+                neighbourInter.Add(line2.End);
             }
             else
             {
-                neighbourInter.Add(line2.endPoint);
-                neighbourInter.Add(line1.endPoint);
-                neighbourInter.Add(line2.startPoint);
+                neighbourInter.Add(line2.End);
+                neighbourInter.Add(line1.End);
+                neighbourInter.Add(line2.Start);
             }
         }
 
@@ -399,15 +391,34 @@ namespace LinearAlgebra
 
     public class Line
     {
-        public Vector2 startPoint;
-        public Vector2 endPoint;
+        Vector2 start;
+        Vector2 end;
+
+        public Vector2 Start => start;
+        public Vector2 End => end;
+
+        public Line(Vector2 v1, Vector2 v2)
+        {
+            start = v1;
+            end = v2;
+        }
     }
 
     public class IntersectionLine
     {
-        public Line line;
+        public IntersectionLine(Intersection i1, Intersection i2)
+        {
+            line = new Line(i1.intersectingPoint, i2.intersectingPoint);
+            start = i1;
+            end = i2;
+        }
 
-        public Intersection startPoint;
-        public Intersection endPoint;
+        Line line;
+        Intersection start;
+        Intersection end;
+
+        public Line Line => line;
+        public Intersection Start => start;
+        public Intersection End => end;
     }
 }

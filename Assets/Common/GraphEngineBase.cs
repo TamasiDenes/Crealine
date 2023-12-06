@@ -55,20 +55,20 @@ namespace LinearAlgebra
                 // adott vonalhoz tartozó keresztezõdések, pontok
                 foreach (Intersection inter in fullInterList)
                 {
-                    if (Intersection.IsPointInLine(interLine.line, inter.intersectingPoint))
+                    if (Intersection.IsPointInLine(interLine.Line, inter.intersectingPoint))
                     {
                         relatedIntersections.Add(inter);
                     }
                 }
 
                 // vonalon az egyik végponttól mért távolságok szerint sorba rendezzük a talált pontokat
-                relatedIntersections.Sort((i1, i2) => ((interLine.line.startPoint - i1.intersectingPoint).magnitude > (interLine.line.startPoint - i2.intersectingPoint).magnitude) ? 1 : -1);
+                relatedIntersections.Sort((i1, i2) => ((interLine.Line.Start - i1.intersectingPoint).magnitude > (interLine.Line.Start - i2.intersectingPoint).magnitude) ? 1 : -1);
 
                 // végeket összekötjük az elsõ, utolsó keresztezõdéssel
                 if (relatedIntersections.Count > 0)
                 {
-                    Intersection.Reconnect(interLine.startPoint, relatedIntersections.First(), interLine.endPoint, interLine.startPoint);
-                    Intersection.Reconnect(relatedIntersections.Last(), interLine.endPoint, interLine.endPoint, interLine.startPoint);
+                    Intersection.Reconnect(interLine.Start, relatedIntersections.First(), interLine.End, interLine.Start);
+                    Intersection.Reconnect(relatedIntersections.Last(), interLine.End, interLine.End, interLine.Start);
                 }
 
                 // ha nincs legalább kettõ találat, nincs változtatás
@@ -78,7 +78,7 @@ namespace LinearAlgebra
                 // köztes keresztezõdéseket sorban összekötjük
                 for (int i = 0; i < relatedIntersections.Count - 1; i++)
                 {
-                    Intersection.Reconnect(relatedIntersections[i], relatedIntersections[i + 1], interLine.endPoint, interLine.startPoint);
+                    Intersection.Reconnect(relatedIntersections[i], relatedIntersections[i + 1], interLine.End, interLine.Start);
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace LinearAlgebra
             {
                 for (int j = i + 2; j < lines.Count; j++)
                 {
-                    (bool, Vector2) interPoint = Intersection.IsIntersecting(lines[i].line, lines[j].line);
+                    (bool, Vector2) interPoint = Intersection.IsIntersecting(lines[i].Line, lines[j].Line);
                     if (interPoint.Item1)
                     {
                         Intersection intersect = new Intersection() { intersectingPoint = interPoint.Item2 };
@@ -177,12 +177,9 @@ namespace LinearAlgebra
             List<IntersectionLine> result = new List<IntersectionLine>();
             for (int i = 0; i < baseInterList.Count - 1; i++)
             {
-                result.Add(new IntersectionLine()
-                {
-                    line = new Line() { startPoint = baseInterList[i].intersectingPoint, endPoint = baseInterList[i + 1].intersectingPoint },
-                    startPoint = baseInterList[i],
-                    endPoint = baseInterList[i + 1]
-                });
+                result.Add(new IntersectionLine(
+                    baseInterList[i],
+                    baseInterList[i + 1]));
             }
 
             return result;

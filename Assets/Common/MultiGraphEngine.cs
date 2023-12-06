@@ -69,12 +69,9 @@ namespace LinearAlgebra
             List<IntersectionLine> result = new List<IntersectionLine>();
             for(int i = 0; i < currentPointInterList.Count - 1; i++)
             {
-                result.Add( new IntersectionLine()
-                { 
-                    line = new Line() { startPoint = currentPointInterList[i].intersectingPoint, endPoint = currentPointInterList[i + 1].intersectingPoint},
-                    startPoint = currentPointInterList[i], 
-                    endPoint = currentPointInterList[i + 1]
-                });
+                result.Add( new IntersectionLine(
+                    currentPointInterList[i], 
+                    currentPointInterList[i + 1]));
             }
 
             return result;
