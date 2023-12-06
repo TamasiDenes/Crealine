@@ -40,8 +40,7 @@ namespace LinearAlgebra
                 List<Intersection> currentPointsInter = new List<Intersection>();
                 for (int j = 0; j < points[i].Count; j++)
                 {
-                    Intersection lineIntersector = new Intersection();
-                    lineIntersector.intersectingPoint = points[i][j];
+                    Intersection lineIntersector = new Intersection(points[i][j]);
                     currentPointsInter.Add(lineIntersector);
                 }
 

@@ -55,14 +55,14 @@ namespace LinearAlgebra
                 // adott vonalhoz tartozó keresztezõdések, pontok
                 foreach (Intersection inter in fullInterList)
                 {
-                    if (Intersection.IsPointInLine(interLine.Line, inter.intersectingPoint))
+                    if (Line.IsPointInLine(interLine.Line, inter.Point))
                     {
                         relatedIntersections.Add(inter);
                     }
                 }
 
                 // vonalon az egyik végponttól mért távolságok szerint sorba rendezzük a talált pontokat
-                relatedIntersections.Sort((i1, i2) => ((interLine.Line.Start - i1.intersectingPoint).magnitude > (interLine.Line.Start - i2.intersectingPoint).magnitude) ? 1 : -1);
+                relatedIntersections.Sort((i1, i2) => ((interLine.Line.Start - i1.Point).magnitude > (interLine.Line.Start - i2.Point).magnitude) ? 1 : -1);
 
                 // végeket összekötjük az elsõ, utolsó keresztezõdéssel
                 if (relatedIntersections.Count > 0)
@@ -94,10 +94,10 @@ namespace LinearAlgebra
             {
                 for (int j = i + 2; j < lines.Count; j++)
                 {
-                    (bool, Vector2) interPoint = Intersection.IsIntersecting(lines[i].Line, lines[j].Line);
+                    (bool, Vector2) interPoint = Line.IsIntersecting(lines[i].Line, lines[j].Line);
                     if (interPoint.Item1)
                     {
-                        Intersection intersect = new Intersection() { intersectingPoint = interPoint.Item2 };
+                        Intersection intersect = new Intersection(interPoint.Item2);
 
                         intersect.AddNeighbour(lines[i], lines[j]);
 
@@ -159,9 +159,9 @@ namespace LinearAlgebra
         {
             List<List<Vector2>> blobList = new List<List<Vector2>>();
 
-            for (int i = 0; i < inter.neighbourInter.Count; i++)
+            for (int i = 0; i < inter.neighbours.Count; i++)
             {
-                List<Vector2> blob = ProcessPath(inter, inter.neighbourInter[i]);
+                List<Vector2> blob = ProcessPath(inter, inter.neighbours[i]);
 
                 if (blob.Count != 0)
                     blobList.Add(blob);
@@ -199,16 +199,16 @@ namespace LinearAlgebra
             {
                 Intersection nextNeighbour = null;
 
-                if (currentNeighbour.neighbourInter.Count == 1)
+                if (currentNeighbour.neighbours.Count == 1)
                 {
                     // simán visszafordulunk
-                    nextNeighbour = currentNeighbour.neighbourInter[0];
+                    nextNeighbour = currentNeighbour.neighbours[0];
 
                     // visszafordulunk és addig megyünk amíg egy rendes keresztezõdéshez nem érünk
-                    while (nextNeighbour.neighbourInter.Count != 4)
+                    while (nextNeighbour.neighbours.Count != 4)
                     {
                         // minden sima elemet kiveszünk a blob-ból
-                        resultBlob.Remove(nextNeighbour.intersectingPoint);
+                        resultBlob.Remove(nextNeighbour.Point);
                         Intersection nextTemp = nextNeighbour.GetOppositeNeighbour(currentNeighbour);
                         currentNeighbour = nextNeighbour;
                         nextNeighbour = nextTemp;
@@ -225,13 +225,13 @@ namespace LinearAlgebra
                 }
 
                 // redundáns elemek törlése
-                if (resultBlob.Contains(currentNeighbour.intersectingPoint))
+                if (resultBlob.Contains(currentNeighbour.Point))
                 {
                     // ha keresztezõdésnél találtuk meg magunkat, vissza indulva minden pontot ki kell szedni addig amíg elsõként nem találkoztunk ezzel a keresztezõdéssel
-                    if (currentNeighbour.neighbourInter.Count == 4)
+                    if (currentNeighbour.neighbours.Count == 4)
                     {
                         Vector2 currentPoint = resultBlob.Last();
-                        while (currentPoint != currentNeighbour.intersectingPoint)
+                        while (currentPoint != currentNeighbour.Point)
                         {
                             resultBlob.Remove(currentPoint);
                             currentPoint = resultBlob.Last();
@@ -239,12 +239,12 @@ namespace LinearAlgebra
                     } // egyébként pedig csak simán ki kell szedni mindent
                     else
                     {
-                        resultBlob.Remove(currentNeighbour.intersectingPoint);
+                        resultBlob.Remove(currentNeighbour.Point);
                     }
                 }
-                else if (currentNeighbour.neighbourInter.Count != 1) // végeket ne adjuk hozzá
+                else if (currentNeighbour.neighbours.Count != 1) // végeket ne adjuk hozzá
                 {
-                    resultBlob.Add(currentNeighbour.intersectingPoint);
+                    resultBlob.Add(currentNeighbour.Point);
                 }
 
 

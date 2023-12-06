@@ -38,8 +38,7 @@ namespace LinearAlgebra
 
             for (int i = 0; i < points.Count; i++)
             {
-                Intersection lineIntersector = new Intersection();
-                lineIntersector.intersectingPoint = points[i];
+                Intersection lineIntersector = new Intersection(points[i]);
                 pointsInter.Add(lineIntersector);
             }
 
