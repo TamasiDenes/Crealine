@@ -1184,8 +1184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snake: {fileID: 2064544582}
   tail: {fileID: 1123268134}
-  snakeNeck: {fileID: 731602104}
-  snakeEnd: {fileID: 1005123466}
   meshOrganiser: {fileID: 887607965}
   rewardOrganiser: {fileID: 921793085}
 --- !u!1 &369447799
@@ -2336,17 +2334,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668394795}
   m_CullTransparentMesh: 1
---- !u!114 &731602104 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3966404127121501750, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
-  m_PrefabInstance: {fileID: 781057683}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cc6b3a858a39d4e83e09aca4c425ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &781057683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3012,28 +2999,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945255200}
   m_CullTransparentMesh: 1
---- !u!114 &963760403 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7755940821433624357, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
-  m_PrefabInstance: {fileID: 1972535765}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cc6b3a858a39d4e83e09aca4c425ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1005123466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7755940821433624357, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
-  m_PrefabInstance: {fileID: 781057683}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cc6b3a858a39d4e83e09aca4c425ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1018947708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,17 +3214,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044454937}
   m_CullTransparentMesh: 1
---- !u!114 &1060671203 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3966404127121501750, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
-  m_PrefabInstance: {fileID: 1972535765}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cc6b3a858a39d4e83e09aca4c425ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1123268133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6882066252916447030, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
@@ -3277,10 +3231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d218ac988f4bc4aa4be9993b0ecbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _pointSpacing: 0.1
-  _numberOfPoints: 40
-  points: []
+  pointSpacing: 0.1
+  numberOfPoints: 80
 --- !u!50 &1123268138
 Rigidbody2D:
   serializedVersion: 4
@@ -3497,14 +3449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1184162343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6d00d2106317745bcdfe94344db1a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 55192d75a548a0747bcbbfe457c04d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player01: {fileID: 0}
-  Player02: {fileID: 0}
   menu: {fileID: 0}
-  MaxScore: 0
-  Record: 0
 --- !u!1 &1239377932
 GameObject:
   m_ObjectHideFlags: 0
@@ -5290,6 +5238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 33654852}
   levelSelectMenu: {fileID: 615100478}
+  controlMenu: {fileID: 0}
 --- !u!1 &1695260646
 GameObject:
   m_ObjectHideFlags: 0
@@ -6692,8 +6641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snake: {fileID: 1972535773}
   tail: {fileID: 1972535772}
-  snakeNeck: {fileID: 1060671203}
-  snakeEnd: {fileID: 963760403}
   meshOrganiser: {fileID: 887607965}
   rewardOrganiser: {fileID: 921793085}
 --- !u!114 &1972535772
@@ -6708,10 +6655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d218ac988f4bc4aa4be9993b0ecbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _pointSpacing: 0.1
-  _numberOfPoints: 40
-  points: []
+  pointSpacing: 0.1
+  numberOfPoints: 80
 --- !u!114 &1972535773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6724,7 +6669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0aed0b06047e3419651888813213a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _movementControls:
     m_Name: 
     m_Type: 0
@@ -6743,10 +6687,19 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  _speed: 1.5
-  _rotationSpeed: 350
-  _freeMovingMode: 0
-  _isMoving: 0
+  _startStopControl:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 562b0c8f-1f1d-426a-b4ce-4a3ef10b289e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  speed: 1.5
+  rotationSpeed: 350
+  freeMovingMode: 1
+  isMoving: 1
 --- !u!50 &1972535780
 Rigidbody2D:
   serializedVersion: 4

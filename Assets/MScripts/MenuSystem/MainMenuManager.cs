@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject optionsMenu, levelSelectMenu;
+    public GameObject optionsMenu, levelSelectMenu, controlMenu;
 
     public void OnClickPlay()
     {
-        // SceneManager.LoadScene("MainLevel");
         levelSelectMenu.SetActive(true);
+    }
+
+    public void OnClickControl()
+    {
+        controlMenu.SetActive(true);
     }
 
     public void OnClickOptions()
@@ -26,6 +30,10 @@ public class MainMenuManager : MonoBehaviour
     public void OnClickBackOptions()
     {
         optionsMenu.SetActive(false);
+    }
+    public void OnClickBackControl()
+    {
+        controlMenu.SetActive(false);
     }
 
     // Start is called before the first frame update
