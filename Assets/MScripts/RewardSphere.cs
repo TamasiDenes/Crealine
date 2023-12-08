@@ -59,8 +59,11 @@ public class RewardSphere : MonoBehaviour
         {
             Color recentColor = mr.material.color;
             mr.material.color = Color.white;
-            if(mr.material.color != recentColor)
+            if (mr.material.color != recentColor)
+            {
                 ScoreManager.Instance.Score++;
+                FindObjectOfType<AudioManager>().Play("CollectReward");
+            }
         }
         else
         {
