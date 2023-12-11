@@ -11365,7 +11365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 60
 --- !u!50 &481903651
 Rigidbody2D:
   serializedVersion: 4
@@ -12067,8 +12067,8 @@ MonoBehaviour:
   sounds:
   - name: CollectReward
     clip: {fileID: 8300000, guid: 48f2c49c4210362469da1176a783fd67, type: 3}
-    volume: 0.821
-    pitch: 1.38
+    volume: 1
+    pitch: 3
     source: {fileID: 0}
 --- !u!1 &535200416
 GameObject:
@@ -19215,10 +19215,10 @@ Transform:
   - {fileID: 967311298}
   - {fileID: 629693560}
   - {fileID: 978044563}
-  - {fileID: 2111731862}
-  - {fileID: 1545196440}
-  - {fileID: 1688519078}
   - {fileID: 1134677340}
+  - {fileID: 1688519078}
+  - {fileID: 1545196440}
+  - {fileID: 2111731862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &782199745
@@ -19239,10 +19239,10 @@ MonoBehaviour:
   - {fileID: 967311297}
   - {fileID: 629693559}
   - {fileID: 978044562}
-  - {fileID: 2111731861}
-  - {fileID: 1545196439}
-  - {fileID: 1688519077}
   - {fileID: 1134677339}
+  - {fileID: 1688519077}
+  - {fileID: 1545196439}
+  - {fileID: 2111731861}
 --- !u!1 &783017898
 GameObject:
   m_ObjectHideFlags: 0
@@ -19799,7 +19799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 60
 --- !u!50 &792371918
 Rigidbody2D:
   serializedVersion: 4
@@ -21472,7 +21472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 60
 --- !u!50 &841802563
 Rigidbody2D:
   serializedVersion: 4
@@ -27292,7 +27292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 30
 --- !u!50 &1105436564
 Rigidbody2D:
   serializedVersion: 4
@@ -27638,7 +27638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134677340}
   m_Layer: 0
-  m_Name: level (9)
+  m_Name: level (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33315,7 +33315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 60
 --- !u!50 &1412569298
 Rigidbody2D:
   serializedVersion: 4
@@ -35501,7 +35501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 35
 --- !u!50 &1476008761
 Rigidbody2D:
   serializedVersion: 4
@@ -37346,7 +37346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1545196440}
   m_Layer: 0
-  m_Name: level (7)
+  m_Name: level (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39868,7 +39868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 60
 --- !u!50 &1618635477
 Rigidbody2D:
   serializedVersion: 4
@@ -41081,7 +41081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 30
 --- !u!50 &1670208044
 Rigidbody2D:
   serializedVersion: 4
@@ -41431,7 +41431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1688519078}
   m_Layer: 0
-  m_Name: level (8)
+  m_Name: level (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42649,7 +42649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 60
 --- !u!50 &1727047969
 Rigidbody2D:
   serializedVersion: 4
@@ -46573,7 +46573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 35
 --- !u!50 &1874703135
 Rigidbody2D:
   serializedVersion: 4
@@ -50391,7 +50391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111731862}
   m_Layer: 0
-  m_Name: level (6)
+  m_Name: level (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
