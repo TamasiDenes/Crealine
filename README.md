@@ -1,6 +1,14 @@
 # Crealine
  2D Unity Cooperative mini game
 
+-----------------------------------------------
+Build:
+1. Download Unity
+2. Open Project Folder in Unity Hub and Build
+OR:
+Run Crealine.exe in Build folder
+-----------------------------------------------
+Descrition:
  Coordinate your snakes with your friend and collect all the items at the same time.
 
  The two players can control the snake with WASD and arrow keys,
