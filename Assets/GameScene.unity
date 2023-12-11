@@ -9273,7 +9273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 110
 --- !u!50 &357359670
 Rigidbody2D:
   serializedVersion: 4
@@ -12216,7 +12216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 100
 --- !u!50 &543107292
 Rigidbody2D:
   serializedVersion: 4
@@ -25078,6 +25078,10 @@ PrefabInstance:
       value: Movement Controls
       objectReference: {fileID: 0}
     - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
+      propertyPath: _startStopControl.m_Name
+      value: Start Stop Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355282261954879665, guid: a6ac98a5f4a26ff4aaa7e69c3f5f543a, type: 3}
       propertyPath: _speedControl.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -28367,7 +28371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 110
 --- !u!50 &1172111097
 Rigidbody2D:
   serializedVersion: 4
@@ -29755,7 +29759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 70
 --- !u!50 &1234207662
 Rigidbody2D:
   serializedVersion: 4
@@ -30780,7 +30784,7 @@ Transform:
   m_GameObject: {fileID: 1299307524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34450,7 +34454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 110
 --- !u!50 &1436576467
 Rigidbody2D:
   serializedVersion: 4
@@ -48731,7 +48735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointSpacing: 0.1
-  numberOfPoints: 80
+  numberOfPoints: 110
 --- !u!50 &2036874679
 Rigidbody2D:
   serializedVersion: 4
