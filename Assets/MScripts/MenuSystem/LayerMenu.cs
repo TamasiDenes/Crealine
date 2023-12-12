@@ -35,7 +35,7 @@ public class LayerMenu : MonoBehaviour
 
         if (isPaused)
         {
-            if (ScoreManager.Instance.IsGameEnd())
+            if (FindObjectOfType<ScoreManager>().IsGameEnd())
                 SuccessMenu();
             else
                 Pause();

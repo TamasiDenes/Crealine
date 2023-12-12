@@ -14,6 +14,8 @@ public class ScoreScript : MonoBehaviour
 
     public void Update()
     {
-        scoreText.text = "Score: " + ScoreManager.Instance.Score.ToString() + "/" + ScoreManager.Instance.MaxScore.ToString();
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+
+        scoreText.text = "Score: " + scoreManager.Score.ToString() + "/" + scoreManager.MaxScore.ToString();
     }
 }

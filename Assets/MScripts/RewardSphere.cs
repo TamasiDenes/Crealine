@@ -17,7 +17,7 @@ public class RewardSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScoreManager.Instance.MaxScore++;
+        FindObjectOfType<ScoreManager>().MaxScore++;
 
         organiser = transform.parent.GetComponent<RewardOrganiser>();
 
@@ -61,7 +61,7 @@ public class RewardSphere : MonoBehaviour
             mr.material.color = Color.white;
             if (mr.material.color != recentColor)
             {
-                ScoreManager.Instance.Score++;
+                FindObjectOfType<ScoreManager>().Score++;
                 FindObjectOfType<AudioManager>().Play("CollectReward");
             }
         }
@@ -72,7 +72,7 @@ public class RewardSphere : MonoBehaviour
             mr.material.color = defaultColor;
             if (mr.material.color != recentColor)
             {
-                ScoreManager.Instance.Score--;
+                FindObjectOfType<ScoreManager>().Score--;
                 FindObjectOfType<AudioManager>().Play("LoseReward");
             }
         }

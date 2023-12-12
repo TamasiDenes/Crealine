@@ -37,24 +37,6 @@ public class ScoreManager : MonoBehaviour
     // the highest achieved score during the gameplay
     public int Record { get; set; }
 
-    // Singleton
-    private static ScoreManager instance;
-
-    public static ScoreManager Instance
-    {
-        get 
-        {
-            if (instance == null)
-                Debug.Log("GameManager is null!");
-
-            return instance; 
-        }
-    }
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private void OnLevelComplete()
     {
