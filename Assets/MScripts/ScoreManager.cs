@@ -64,8 +64,8 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("UnlockedLevels", LevelSelectionMenuManager.unlockedLevels);
         }
 
+        FindObjectOfType<AudioManager>().Play("WinLevel");
         menu.SuccessMenu();
-
     }
 
     public bool IsGameEnd()

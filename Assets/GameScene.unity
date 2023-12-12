@@ -12066,9 +12066,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: CollectReward
+    clip: {fileID: 8300000, guid: ead4a934ad43dbf4a90b80f648788ed6, type: 3}
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: LoseReward
     clip: {fileID: 8300000, guid: 48f2c49c4210362469da1176a783fd67, type: 3}
     volume: 1
-    pitch: 3
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: WinLevel
+    clip: {fileID: 8300000, guid: 621bf3e2624e4c5488eff98703d56633, type: 3}
+    volume: 1
+    pitch: 1.5
     source: {fileID: 0}
 --- !u!1 &535200416
 GameObject:

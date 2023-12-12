@@ -71,7 +71,10 @@ public class RewardSphere : MonoBehaviour
 
             mr.material.color = defaultColor;
             if (mr.material.color != recentColor)
+            {
                 ScoreManager.Instance.Score--;
+                FindObjectOfType<AudioManager>().Play("LoseReward");
+            }
         }
     }
 }
