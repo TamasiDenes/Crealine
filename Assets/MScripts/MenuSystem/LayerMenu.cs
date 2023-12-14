@@ -74,7 +74,7 @@ public class LayerMenu : MonoBehaviour
 
     }
 
-    public void Replay()
+    public void Restart()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
