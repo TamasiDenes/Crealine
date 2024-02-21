@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="Assets\Common\ExtensionMethods.cs" />
     <Compile Include="Assets\Common\GraphEngineBase.cs" />
-    <Compile Include="Assets\Common\IntersectManager.cs" />
     <Compile Include="Assets\Common\LinearAlgebra.cs" />
     <Compile Include="Assets\Common\MultiGraphEngine.cs" />
     <Compile Include="Assets\Common\SingleGraphEngine.cs" />
